@@ -11,7 +11,7 @@ export function FloatingWidget() {
 
 function WidgetButton() {
   return (
-    <Button variant="outline" className="px-5 py-2 border rounded-3xl">
+    <Button variant="outline" className="rounded-3xl border px-5 py-2">
       <span className="text-sm">Ask</span>
     </Button>
   );
@@ -19,7 +19,7 @@ function WidgetButton() {
 
 function WidgetPanel() {
   return (
-    <div className="hidden p-4 border rounded-3xl">
+    <div className="hidden rounded-3xl border p-4">
       <span>WidgetPanel</span>
     </div>
   );

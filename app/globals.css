@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-work-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-geist-mono);
 
@@ -47,7 +47,7 @@
 }
 
 :root {
-  --font-sans: Geist, sans-serif;
+  --font-sans: Work_Sans, sans-serif;
   --font-serif: ui-serif, serif;
   --font-mono: "Geist Mono", ui-monospace;
 
