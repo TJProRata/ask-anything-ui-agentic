@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Work_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Work_Sans, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { AppHeader } from "@/components/app/app-header";
 import { AppFooter } from "@/components/app/app-footer";
