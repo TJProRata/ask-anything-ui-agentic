@@ -36,11 +36,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="font-sans grid min-h-screen max-w-6xl mx-auto grid-rows-[46px_1fr_42px] sm:grid-rows-[36px_1fr_42px] items-center justify-items-center gap-16 p-4 sm:p-8">
+          <div className="font-sans grid min-h-screen max-w-6xl mx-auto grid-rows-[46px_1fr_42px] sm:grid-rows-[36px_1fr_42px] items-center justify-items-center gap-8 p-4 sm:p-8">
             <AppHeader />
-            <main className="row-start-2 flex flex-col items-center gap-8">
+            {children}
+            {/* <main className="row-start-2 flex flex-col items-center gap-8">
               {children}
-            </main>
+            </main> */}
             <AppFooter />
           </div>
         </ThemeProvider>

@@ -1,9 +1,13 @@
+import { AppPage } from "@/components/app/app-page";
 import { FloatingWidget } from "@/components/widgets/floating-widget/floating-widget";
-import { AskButton } from "@/components/ask-anything/ask-button";
 
 export default function Widgets() {
   return (
-    <>
+    <AppPage title="Widgets" description="🚧 WORK IN PROGRESS 🚧">
+      <div className="w-fit flex flex-row items-center gap-4">
+        <h3 className="w-fit text-sm font-medium font-mono px-2 py-1 border rounded-sm bg-accent">FloatingWidget</h3>
+        <span className="text-sm text-muted-foreground">🚧</span>
+      </div>
       {/* TODO: Clean up FloatingWidget props */}
       <FloatingWidget
         containerId="ask-anything-floating-widget"
@@ -23,8 +27,6 @@ export default function Widgets() {
           placeholder: "Ask Anything",
         }}
       />
-      <AskButton />
-      <span>🚧</span>
-    </>
+    </AppPage>
   );
 }

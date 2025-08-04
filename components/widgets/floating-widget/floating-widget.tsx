@@ -4,6 +4,7 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { useWidgetAPI } from "@/hooks/use-widget-api";
 import type { WidgetConfig, WidgetMessage } from "@/widgets/types";
 import { Button } from "@/components/ui/button";
+import { AskButton } from "@/components/ask-anything/ask-button";
 
 interface FloatingWidgetProps extends WidgetConfig {
   config: WidgetConfig;
@@ -106,14 +107,14 @@ interface FloatingWidgetButtonProps {
 
 function FloatingWidgetButton({ onClick, text }: FloatingWidgetButtonProps) {
   return (
-    <Button
+    <AskButton
       className="floating-widget-button rounded-3xl border px-5 py-2"
       variant="outline"
       aria-label="Open Ask Anything Widget"
       onClick={onClick}
     >
       <span className="text-sm">{text}</span>
-    </Button>
+    </AskButton>
   );
 }
 
