@@ -105,7 +105,7 @@ interface FloatingWidgetButtonProps {
   text: string;
 }
 
-function FloatingWidgetButton({ onClick, text }: FloatingWidgetButtonProps) {
+export function FloatingWidgetButton({ onClick, text }: FloatingWidgetButtonProps) {
   return (
     <AskButton
       className="floating-widget-button rounded-3xl border px-5 py-2"
@@ -128,7 +128,7 @@ interface FloatingWidgetPanelProps {
   onCollapse: () => void;
 }
 
-function FloatingWidgetPanel({
+export function FloatingWidgetPanel({
   isLoading,
   messages,
   headerTitle,
