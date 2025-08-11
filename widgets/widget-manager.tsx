@@ -4,8 +4,34 @@ import type { WidgetConfig, WidgetInstance } from "@/widgets/types";
 import { FloatingWidget } from "@/components/widgets/floating-widget/floating-widget";
 // import widgetStyles from './widget.tailwind.css?inline';
 
-// PLACEHOLDER
-const widgetStyles = ``;
+// PLACEHOLDER: this will be replaced by generated CSS from styles/widget.css
+const widgetStyles = `
+  /* Shadow DOM Reset */
+  *, *::before, *::after { box-sizing: border-box; }
+  :host, .widget-container { all: initial; font-family: system-ui, -apple-system, sans-serif; }
+  .widget-container { position: fixed; inset: auto; }
+
+  /* Widget Theme Variables (override via customStyles) */
+  :host {
+    --widget-bg: #1f2937;
+    --widget-text: #ffffff;
+    --widget-primary: #60a5fa;
+    --widget-border: #374151;
+  }
+
+  /* Primitive styles for panel/button shells; UI uses Tailwind classes rendered inside */
+  .floating-widget-button { cursor: pointer; }
+  .floating-widget-panel {
+    background: var(--widget-bg);
+    color: var(--widget-text);
+    border: 1px solid var(--widget-border);
+    width: 320px;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+`;
 
 export class WidgetManager {
   public instances: Map<string, WidgetInstance> = new Map();
@@ -64,14 +90,7 @@ export class WidgetManager {
     const root = createRoot(mountPoint);
     root.render(
       <React.StrictMode>
-        <FloatingWidget
-          containerId={containerId}
-          config={config}
-          apiKey={apiKey}
-          theme={theme}
-          onReady={onReady}
-          {...restConfig}
-        />
+        <FloatingWidget config={config} />
       </React.StrictMode>
     );
     

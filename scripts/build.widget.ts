@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 import { transform } from "lightningcss";
 
-// TODO: Modify ENTRY_POINT as needed
-const ENTRY_POINT = "components/widgets/floating-widget/floating-widget.tsx";
+// Use the widget initializer as the IIFE entrypoint
+const ENTRY_POINT = "scripts/initialize.widget.ts";
 const OUTPUT_DIR = "dist";
 
 const result = await Bun.build({

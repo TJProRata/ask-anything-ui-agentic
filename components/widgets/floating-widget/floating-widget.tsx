@@ -3,31 +3,25 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { useWidgetAPI } from "@/hooks/use-widget-api";
 import type { WidgetConfig, WidgetMessage } from "@/widgets/types";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { AskButton } from "@/components/ask-anything/ask-button";
 
-interface FloatingWidgetProps extends WidgetConfig {
-  config: WidgetConfig;
-}
+interface FloatingWidgetProps { config: WidgetConfig; }
 
 // TODO: Clean up FloatingWidget props
-export function FloatingWidget({
-  // containerId,
-  config,
-  apiKey,
-  apiEndpoint,
-  theme = "dark",
-  buttonText = "Ask",
-  headerTitle = "Ask New York Times Anything!",
-  placeholder = "Ask Anything",
-  position = "bottom-right",
-  customStyles,
-  initialExpanded = false,
-  onReady,
-  onMessage,
-  onExpand,
-  onCollapse,
-}: FloatingWidgetProps) {
+export function FloatingWidget({ config }: FloatingWidgetProps) {
+  const {
+    apiKey,
+    apiEndpoint,
+    theme = "dark",
+    buttonText = "Ask",
+    headerTitle = "Ask New York Times Anything!",
+    placeholder = "Ask Anything",
+    initialExpanded = false,
+    onMessage,
+    onExpand,
+    onCollapse,
+  } = config;
   const [isExpanded, setIsExpanded] = useState(initialExpanded);
   const [messages, setMessages] = useState<WidgetMessage[]>([]);
   const { sendMessage, isLoading, error } = useWidgetAPI(apiKey, apiEndpoint);
@@ -162,9 +156,37 @@ export function FloatingWidgetPanel({
   };
 
   return (
-    <div className="floating-widget-panel rounded-3xl border p-4">
-      <span>FloatingWidgetPanel</span>
-      {/* TODO: Implement actual FloatingWidgetPanel */}
+    <div className="floating-widget-panel rounded-3xl p-3">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium">{headerTitle}</span>
+        <button className="text-xs opacity-70 hover:opacity-100" onClick={onCollapse} aria-label="Close">✕</button>
+      </div>
+      <div className="flex-1 overflow-y-auto rounded-md border border-[color:var(--widget-border)] p-2 space-y-2">
+        {messages.map((m) => (
+          <div key={m.id} className="text-xs">
+            <span className="opacity-70">{m.sender === 'user' ? 'You' : 'AI'}:</span> {m.text}
+          </div>
+        ))}
+        {isLoading && <div className="text-xs opacity-70">AI is typing…</div>}
+        {error && <div className="text-xs text-red-400">{error}</div>}
+        <div ref={messagesEndRef} />
+      </div>
+      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        <input
+          ref={inputRef}
+          className="flex-1 rounded-md border border-[color:var(--widget-border)] bg-transparent px-2 py-1 text-sm"
+          placeholder={placeholder}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="rounded-md bg-[color:var(--widget-primary)] px-3 py-1 text-xs text-black disabled:opacity-50"
+          disabled={isLoading || !input.trim()}
+        >
+          Send
+        </button>
+      </form>
     </div>
   );
 }

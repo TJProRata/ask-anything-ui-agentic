@@ -5,7 +5,7 @@ export function useWidgetAPI(apiKey: string, endpoint?: string) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const defaultEndpoint = endpoint || "https://api.ask-anything.com/v1";
+  const defaultEndpoint = endpoint || "/api/widget";
 
   const sendMessage = useCallback(async (
     text: string, 
