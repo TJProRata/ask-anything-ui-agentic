@@ -1,0 +1,350 @@
+## Design System Rules for Figma Integration (MCP)
+
+### Quick Stack Overview
+- **Frameworks**: React 19, Next.js 15 (App Router)
+- **Styling**: Tailwind CSS v4 with CSS custom properties and `@theme inline`
+- **UI Primitives**: shadcn/ui + Radix UI
+- **Theming**: `next-themes` + `.dark` variant
+- **Icons**: `lucide-react`
+- **Build**: Next build/Turbopack dev; Bun for widget IIFE builds with Lightning CSS
+
+---
+
+### 1) Design System Structure
+
+#### 1.1 Token Definitions
+- **Where**
+  - Global CSS variables and Tailwind v4 theme mapping in `app/globals.css`.
+  - Ask Anything tokens (brand + action/button/icon) are defined in `:root` and `.dark`.
+- **Format/Structure**
+  - CSS custom properties grouped by surfaces, actions, charts, sidebar, and brand.
+  - Tailwind v4 `@theme inline` maps CSS variables to Tailwind tokens (`--color-*`, `--radius-*`, `--font-*`).
+- **Transform Systems**
+  - No automated token transform currently. A planned Bun-based pipeline is documented in `docs/FIGMA-INTEGRATION.md` for Figma → CSS vars + TS maps.
+
+Key excerpts:
+```css
+/* Tailwind v4 theme mapping */
+@theme inline {
+  --font-sans: var(--font-work-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* … */
+  /* Ask Anything Colors */
+  --color-ask-anything-green: var(--ask-anything-green);
+  --color-ask-anything-purple: var(--ask-anything-purple);
+}
+
+:root {
+  /* Ask Anything Design Tokens */
+  --ask-anything-green: oklch(0.9455 0.0801 168.22);
+  --ask-anything-purple: oklch(0.7186 0.1849 305.32);
+  --ask-anything-linear-gradient: linear-gradient(
+    90deg,
+    var(--ask-anything-purple) 0%,
+    var(--ask-anything-green) 100%
+  );
+
+  /* Action (Button/Icon) Tokens — Light Mode */
+  --action-primary-bg: rgba(21, 16, 34, 0.05);
+  --action-primary-bg-hover: rgba(21, 16, 34, 0.08);
+  --action-secondary-bg: rgba(21, 16, 34, 0.10);
+  --action-secondary-bg-hover: rgba(21, 16, 34, 0.15);
+  --action-secondary-border: rgba(21, 16, 34, 0.09);
+  --action-tertiary-bg: rgba(21, 16, 34, 0.05);
+  --action-tertiary-bg-hover: rgba(21, 16, 34, 0.08);
+  /* Gradient with alpha */
+  --action-gradient-start: #c081ff66;
+  --action-gradient-stop: #b8ffe266;
+  --action-gradient-start-hover: #c081ff80;
+  --action-gradient-stop-hover: #b8ffe280;
+}
+
+.dark {
+  /* Action (Button/Icon) Tokens — Dark Mode */
+  --action-primary-bg: rgba(255, 255, 255, 0.10);
+  --action-primary-bg-hover: rgba(255, 255, 255, 0.15);
+  --action-secondary-bg: rgba(255, 255, 255, 0.10);
+  --action-secondary-bg-hover: rgba(255, 255, 255, 0.15);
+  --action-secondary-border: rgba(255, 255, 255, 0.30);
+  --action-tertiary-bg: rgba(255, 255, 255, 0.10);
+  --action-tertiary-bg-hover: rgba(255, 255, 255, 0.15);
+  --action-gradient-start: #c081ff66;
+  --action-gradient-stop: #b8ffe266;
+  --action-gradient-start-hover: #c081ff80;
+  --action-gradient-stop-hover: #b8ffe280;
+}
+```
+
+#### 1.2 Component Library
+- **Where**
+  - shadcn primitives: `components/ui/*`
+  - App shell: `components/app/*`
+  - Ask Anything components: `components/ask-anything/*`
+  - Widget: `components/widgets/floating-widget/*`
+- **Architecture**
+  - Variant-driven components using `class-variance-authority (cva)`, consuming Tailwind tokens.
+  - Composable primitives; Radix under the hood.
+
+Button primitive pattern:
+```ts
+// components/ui/button.tsx
+const buttonVariants = cva(
+  "cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline",
+        icon: "bg-transparent text-current shadow-none border-0 hover:bg-transparent hover:text-current",
+      },
+      size: {
+        default: "h-9 rounded-md",
+        sm: "h-8 rounded-md gap-1.5",
+        lg: "h-10 rounded-md",
+        icon: "size-9",
+        iconSm: "w-6 h-6 p-0",
+        iconLg: "w-10 h-10 p-0",
+      },
+    },
+    defaultVariants: { variant: "default", size: "default" },
+  }
+);
+```
+
+Ask Anything icon button consuming tokens:
+```tsx
+// components/ask-anything/button/button-icon.tsx
+export function ButtonIcon({ variant = "primary", size = "sm", icon, ...props }: ButtonIconProps) {
+  const sizeClasses = size === "lg" ? "w-10 h-10" : "w-6 h-6";
+  const shapeClasses =
+    variant === "tertiary" ? (size === "lg" ? "rounded-[12.3px]" : "rounded-[8px]") : "rounded-full";
+
+  const backgroundClasses =
+    variant === "primary"
+      ? "bg-[var(--action-primary-bg)] hover:bg-[var(--action-primary-bg-hover)]"
+      : variant === "secondary"
+        ? "bg-[var(--action-secondary-bg)] hover:bg-[var(--action-secondary-bg-hover)]"
+        : variant === "tertiary"
+          ? "bg-[var(--action-tertiary-bg)] hover:bg-[var(--action-tertiary-bg-hover)]"
+          : "bg-[linear-gradient(90deg,var(--action-gradient-start),var(--action-gradient-stop))] hover:bg-[linear-gradient(90deg,var(--action-gradient-start-hover),var(--action-gradient-stop-hover))]";
+
+  const borderClasses = variant === "secondary" ? "border border-[var(--action-secondary-border)]" : "border border-transparent";
+
+  return (
+    <Button
+      className={[
+        "inline-flex items-center justify-center px-0 py-0 transition-colors",
+        sizeClasses,
+        shapeClasses,
+        backgroundClasses,
+        borderClasses,
+        "text-foreground",
+      ].join(" ")}
+      variant="icon"
+      size={size === "lg" ? "iconLg" : "iconSm"}
+      {...props}
+    >
+      {icon ?? <Plus className={size === "lg" ? "size-5" : "size-4"} strokeWidth={2} />}
+    </Button>
+  );
+}
+```
+
+- **Docs/Storybook**: No Storybook present. Internal docs live in `docs/` and the WIP tokens page `app/tokens/page.tsx`.
+
+#### 1.3 Frameworks & Libraries
+- **UI**: React 19 + Next.js 15 App Router.
+- **Styling**: Tailwind v4 with `@tailwindcss/postcss` in `postcss.config.mjs`.
+- **UI Libs**: shadcn/ui (`components.json`, `iconLibrary: "lucide"`), Radix UI, `class-variance-authority`.
+- **Theming**: `next-themes` with `.dark` variant.
+- **Build**: Next for app; Bun-based widget build with Lightning CSS.
+
+```ts
+// postcss.config.mjs
+const config = { plugins: ["@tailwindcss/postcss"] };
+export default config;
+```
+
+```ts
+// scripts/build.widget.ts (excerpt)
+const result = await Bun.build({
+  entrypoints: ["scripts/initialize.widget.ts"],
+  outdir: "dist",
+  target: "browser",
+  format: "iife",
+  naming: { entry: "widget.[hash].js", chunk: "chunk.[hash].js", asset: "assets/[name].[hash].[ext]" },
+  minify: true,
+  sourcemap: "external",
+});
+```
+
+#### 1.4 Asset Management
+- **Storage/Reference**: Assets in `public/`, referenced via `next/image` or root paths.
+- **Optimization**: `next/image` pipeline for images; Lightning CSS minification in widget build; hashed assets in `dist/`.
+- **CDN**: No explicit CDN config in `next.config.ts` (follow hosting defaults).
+
+```tsx
+// components/ask-anything/ask-button.tsx (excerpt)
+<Image src="/sparkle.svg" alt="Sparkle" width={24} height={24} className="size-6" />
+```
+
+#### 1.5 Icon System
+- **Source**: `lucide-react` across primitives and app/theme components.
+- **Usage**: Named imports; sizes via Tailwind (`size-*`) or component classes. Keep stroke width consistent.
+
+#### 1.6 Styling Approach
+- **Methodology**: Tailwind v4 utilities with CSS custom properties as the design-token source of truth.
+- **Global Styles**: Base layer sets default border/ring and surfaces via tokens.
+- **Dark Mode**: `.dark` class variant via `@custom-variant dark` and `next-themes`.
+- **Responsive**: Tailwind responsive utilities (no custom breakpoints file present).
+
+```css
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+}
+```
+
+#### 1.7 Project Structure
+- **App Router**: `app/` (pages: `/`, `/widgets`, `/components`, `/tokens`)
+- **Components**: `components/ui`, `components/ask-anything`, `components/app`
+- **Widget System**: `widgets/*` runtime + `scripts/*` Bun build
+- **Docs**: `docs/*` including `docs/FIGMA-INTEGRATION.md`
+
+---
+
+### 2) Figma + MCP Integration Rules
+- **Tokens**
+  - Map Figma variables to CSS custom properties with stable names:
+    - Brand: `--ask-anything-*`
+    - Actions: `--action-*` (light/dark values in `:root`/`.dark`)
+  - Reflect any token changes in `app/globals.css` (and widget Shadow DOM CSS if/when added).
+  - Avoid hard-coded hex in components; prefer `var(--token)`-backed utilities.
+- **Components**
+  - Express Figma variants as `cva` variants; align prop names with Figma (e.g., `variant`, `size`).
+  - Bind colors/radii via CSS variables in utilities.
+  - Compose from `components/ui/*`; place brand-level components in `components/ask-anything/*`.
+- **Icons**
+  - Use `lucide-react` named imports; default sizes: `size-4` (base), `size-5` (large icon buttons).
+  - For custom Figma icons, add SVGs to `public/` with descriptive names.
+- **Assets**
+  - Keep exported assets in `public/`. Use `next/image` for raster; inline/`<img>` for SVG if needed.
+  - Widget builds must inline/hash assets via Bun build.
+- **Theming**
+  - Maintain dark-mode equivalents for any light-mode token.
+  - Use `next-themes` for user theme selection.
+- **Docs & Links**
+  - Attach Figma Dev Resources to code paths (e.g., “Ask Button” → `components/ask-anything/ask-button.tsx`).
+  - Optionally generate docs under `docs/components/` (see `docs/FIGMA-INTEGRATION.md`).
+- **Build & Distribution**
+  - App: standard Next build.
+  - Widget: `bun run build:widget` bundles/minifies; ensure token parity with app.
+
+---
+
+### 3) Practical Mapping Examples
+- **Button/Icon variant mapping (Figma → Code)**
+  - Figma: `Primary|Secondary|Tertiary|Quaternary` → `variant?: "primary" | "secondary" | "tertiary" | "quaternary"`
+  - Figma: `Small|Large` → `size?: "sm" | "lg"`
+  - Background/border/gradient from action tokens; avoid hard-coded colors.
+
+- **Gradient Text (Figma → Code)**
+  - Use brand gradient for text via Tailwind utilities.
+  - Prefer tokenizing gradient stops once stabilized (`--ask-anything-linear-gradient`).
+
+---
+
+### 4) Gaps and Next Steps
+- Add optional scripts from `docs/FIGMA-INTEGRATION.md`:
+  - `scripts/figma.tokens.ts` (fetch/transform tokens)
+  - `scripts/figma.components.ts` (component mapping docs)
+- Consider `styles/widget.css` for Shadow DOM tokens if widget theming needs isolation.
+- Add lightweight docs per component under `docs/components/` with Figma node links.
+
+---
+
+### 5) How to add/modify a token
+
+Use this checklist to safely introduce or change a design token.
+
+1) Choose a stable token name
+- **Brand tokens**: `--ask-anything-*` (e.g., `--ask-anything-blue`).
+- **Action tokens**: `--action-*` (e.g., `--action-primary-bg`).
+- Keep names consistent with Figma variable names where possible.
+
+2) Define values in `app/globals.css`
+- Add or update values in both `:root` (light) and `.dark` (dark), if applicable.
+
+```css
+:root {
+  --ask-anything-blue: oklch(0.78 0.12 250);
+}
+.dark {
+  --ask-anything-blue: oklch(0.62 0.10 250);
+}
+```
+
+3) Map to Tailwind theme (if you need a new alias)
+- If the token should be used as a Tailwind color (e.g., `bg-primary`), map it inside `@theme inline` using `--color-*` or add a new CSS variable utility reference.
+
+```css
+@theme inline {
+  /* Example: expose as a color slot */
+  --color-brand-blue: var(--ask-anything-blue);
+}
+```
+
+4) Consume tokens in components
+- Prefer `var(--token)` utilities instead of raw hex values.
+
+```tsx
+// Good: token-based usage
+<div className="bg-[var(--ask-anything-blue)] text-foreground" />
+
+// Good: for action variants
+<Button className="bg-[var(--action-primary-bg)] hover:bg-[var(--action-primary-bg-hover)]" />
+```
+
+5) Verify dark mode
+- Ensure `.dark` has a correct value for any added token that affects UI.
+- Test visually by toggling theme (see `components/theme/theme-toggle.tsx`).
+
+6) Widget theming (if needed)
+- If the widget runs in Shadow DOM, mirror essential tokens in a dedicated `styles/widget.css` (planned). Keep names consistent.
+
+7) Documentation
+- If the token is user-facing or important to designers, update `app/tokens/page.tsx` and (optionally) add notes in `docs/`.
+
+8) Avoid new packages
+- Do not introduce new dependencies for tokens. Use existing Tailwind v4 and CSS variable patterns.
+
+9) Optional Figma sync (future)
+- When scripts are enabled, run `bun scripts/figma.tokens.ts` to regenerate CSS/TS maps from Figma variables.
+
+10) PR checklist
+- Includes: `app/globals.css` updates (light/dark), component usage, visual checks (light/dark), and updated docs.
+
+---
+
+### References
+- Figma REST API (OpenAPI): `https://github.com/figma/rest-api-spec`
+- Figma Code Connect: `https://github.com/figma/code-connect`
+- Tokens Studio (optional flow): `https://github.com/tokens-studio/tokens-studio-for-figma-plugin-docs`
+- Tailwind CSS v4: `https://tailwindcss.com/docs`
+- shadcn/ui: `https://ui.shadcn.com/docs`
