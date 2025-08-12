@@ -41,7 +41,7 @@ Ask Anything UI has a strong modern foundation (Next.js 15, React 19, Tailwind v
 
 - FloatingWidget props duplication
 
-```9:31:components/widgets/floating-widget/floating-widget.tsx
+```tsx:9:31:components/widgets/floating-widget/floating-widget.tsx
 interface FloatingWidgetProps extends WidgetConfig {
   config: WidgetConfig;
 }
@@ -67,7 +67,7 @@ export function FloatingWidget({
 
 - Panel UI is stubbed
 
-```165:170:components/widgets/floating-widget/floating-widget.tsx
+```tsx:165:170:components/widgets/floating-widget/floating-widget.tsx
 return (
   <div className="floating-widget-panel rounded-3xl border p-4">
     <span>FloatingWidgetPanel</span>
@@ -78,7 +78,7 @@ return (
 
 - Shadow DOM styles not injected (placeholder)
 
-```5:12:widgets/widget-manager.tsx
+```typescript:5:12:widgets/widget-manager.tsx
 // import widgetStyles from './widget.tailwind.css?inline';
 
 // PLACEHOLDER
@@ -87,14 +87,14 @@ const widgetStyles = ``;
 
 - Build script entrypoint mismatch (should be initializer)
 
-```4:6:scripts/build.widget.ts
+```typescript:4:6:scripts/build.widget.ts
 // TODO: Modify ENTRY_POINT as needed
 const ENTRY_POINT = "components/widgets/floating-widget/floating-widget.tsx";
 ```
 
 - Initializer exists and provides global + auto‑init (should be entrypoint)
 
-```13:22:scripts/initialize.widget.ts
+```typescript:13:22:scripts/initialize.widget.ts
 // Initialize widget manager
 const widgetManager = new WidgetManager();
 
@@ -109,7 +109,7 @@ if (typeof window !== 'undefined') {
 
 - API hook defaults to external endpoint (dev flow would benefit from local route)
 
-```8:14:hooks/use-widget-api.ts
+```typescript:8:14:hooks/use-widget-api.ts
 const defaultEndpoint = endpoint || "https://api.ask-anything.com/v1";
 ```
 
