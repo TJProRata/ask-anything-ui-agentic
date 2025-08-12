@@ -93,6 +93,23 @@
   --ask-anything-green: oklch(0.9455 0.0801 168.22);
   --ask-anything-purple: oklch(0.7186 0.1849 305.32);
   --ask-anything-linear-gradient: linear-gradient(90deg, var(--ask-anything-purple) 0%, var(--ask-anything-green) 100%);
+
+  /* Action (Button/Icon) Tokens — Light Mode */
+  --action-primary-bg: rgba(21, 16, 34, 0.05);
+  --action-primary-bg-hover: rgba(21, 16, 34, 0.08);
+
+  --action-secondary-bg: rgba(21, 16, 34, 0.10);
+  --action-secondary-bg-hover: rgba(21, 16, 34, 0.15);
+  --action-secondary-border: rgba(21, 16, 34, 0.09);
+
+  --action-tertiary-bg: rgba(21, 16, 34, 0.05);
+  --action-tertiary-bg-hover: rgba(21, 16, 34, 0.08);
+
+  /* Gradient uses alpha-embedded 8-digit hex for consistent Tailwind var usage */
+  --action-gradient-start: #c081ff66; /* 40% */
+  --action-gradient-stop: #b8ffe266;  /* 40% */
+  --action-gradient-start-hover: #c081ff80; /* 50% */
+  --action-gradient-stop-hover: #b8ffe280;  /* 50% */
 }
 
 .dark {
@@ -127,6 +144,23 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Action (Button/Icon) Tokens — Dark Mode */
+  --action-primary-bg: rgba(255, 255, 255, 0.10);
+  --action-primary-bg-hover: rgba(255, 255, 255, 0.15);
+
+  --action-secondary-bg: rgba(255, 255, 255, 0.10);
+  --action-secondary-bg-hover: rgba(255, 255, 255, 0.15);
+  --action-secondary-border: rgba(255, 255, 255, 0.30);
+
+  --action-tertiary-bg: rgba(255, 255, 255, 0.10);
+  --action-tertiary-bg-hover: rgba(255, 255, 255, 0.15);
+
+  /* Gradient remains the same across themes */
+  --action-gradient-start: #c081ff66;
+  --action-gradient-stop: #b8ffe266;
+  --action-gradient-start-hover: #c081ff80;
+  --action-gradient-stop-hover: #b8ffe280;
 }
 
 @layer base {

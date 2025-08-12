@@ -39,13 +39,13 @@ export class WidgetManager {
   
   init(config: WidgetConfig) {
     const {
+      // apiKey,
       containerId,
-      apiKey,
       theme = 'dark',
       position = 'bottom-right',
       customStyles = {},
       onReady,
-      ...restConfig
+      // ...restConfig
     } = config;
     
     // Find or create container
