@@ -20,15 +20,15 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Phase 0 — Baseline
 
-- [ ] T-0.1 [P1] Verify build entry and format
+- [x] T-0.1 [P1] Verify build entry and format
   - Files: `scripts/build.widget.ts`
   - Acceptance: Entry is `scripts/initialize.widget.ts`, format is `iife`, outputs in `dist/`.
 
-- [ ] T-0.2 [P1] Verify API development path
+- [x] T-0.2 [P1] Verify API development path
   - Files: `hooks/use-widget-api.ts`, `app/api/widget/route.ts`
   - Acceptance: Default endpoint `/api/widget` returns JSON with `message`.
 
-- [ ] T-0.3 [P2] Verify component props simplification
+- [x] T-0.3 [P2] Verify component props simplification
   - Files: `components/widgets/floating-widget/floating-widget.tsx`
   - Acceptance: Component accepts a single `config: WidgetConfig` prop.
 
@@ -36,27 +36,27 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Phase 1 — MVP embedding & isolation
 
-- [ ] T-1.1 [P1] Add Shadow DOM stylesheet
+- [x] T-1.1 [P1] Add Shadow DOM stylesheet
   - Files: `styles/widget.css` (new)
   - Acceptance: Contains minimal reset and `--widget-*` vars (bg, text, border, primary).
 
-- [ ] T-1.2 [P1] Inject real CSS into Shadow DOM
+- [x] T-1.2 [P1] Inject real CSS into Shadow DOM
   - Files: `widgets/widget-manager.tsx`
   - Acceptance: `widgetStyles` replaced by imported CSS string; `<style>` injected before React mount; no FOUC.
 
-- [ ] T-1.3 [P1] Validate isolation in blank HTML host
+- [x] T-1.3 [P1] Validate isolation in blank HTML host
   - Files: `dist/widget.[hash].js` (artifact)
   - Acceptance: Widget renders correctly on a plain HTML page; host styles don’t affect widget; no leaks out.
 
-- [ ] T-1.4 [P1] Global API and auto-init
+- [x] T-1.4 [P1] Global API and auto-init
   - Files: `scripts/initialize.widget.ts`
   - Acceptance: `window.FloatingWidget.init(config)` mounts; script with `data-widget-config` auto-initializes.
 
-- [ ] T-1.5 [P2] Next.js embed demo (IIFE)
+- [x] T-1.5 [P2] Next.js embed demo (IIFE)
   - Files: `app/widgets/page.tsx`
   - Acceptance: Page shows both direct component render and IIFE embed via `<Script>` with `data-widget-config`.
 
-- [ ] T-1.6 [P2] Accessibility polish
+- [x] T-1.6 [P2] Accessibility polish
   - Files: `components/widgets/floating-widget/floating-widget-card.tsx`
   - Acceptance: Close/send controls have ARIA labels; ESC closes; loading and errors announced visually.
 
@@ -128,7 +128,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Progress snapshot
 
-- Open tasks: 0 completed / 0 total recorded at creation.
+- Open tasks: 4 completed / remaining open per sections above.
 - Update this section as tasks complete.
 
 

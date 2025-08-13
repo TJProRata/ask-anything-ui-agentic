@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Widget Host Isolation Test</title>
+    <style>
+      /* Host page styles that should NOT leak into the widget */
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #fffbeb; /* amber-50 */
+        color: #0f172a; /* slate-950 */
+        font-family: Georgia, serif;
+      }
+      h1, h2, h3 { margin: 0 0 12px; }
+      .host-card { padding: 16px; border: 1px dashed #a3a3a3; margin-bottom: 16px; }
+      /* Aggressive host button styles */
+      button { background: crimson !important; color: #fff !important; border-radius: 0 !important; }
+      input { border: 2px dashed #ef4444 !important; }
+    </style>
+  </head>
+  <body>
+    <h1>ask-anything-ui</h1>
+    <h2>Widget Host Isolation Test</h2>
+    <p>This page validates Shadow DOM isolation and both auto-init and programmatic init.</p>
+
+    <div class="host-card">
+      <h3>Auto-init via data-widget-config</h3>
+      <div id="host-auto"></div>
+      <script
+        src="/dist/widget.js"
+        data-widget-config='{
+          "containerId":"host-auto",
+          "apiKey":"",
+          "apiEndpoint":"/api/widget",
+          "theme":"dark",
+          "buttonText":"Ask",
+          "headerTitle":"Widget Auto-Init",
+          "placeholder":"Type your question"
+        }'
+      ></script>
+    </div>
+
+    <div class="host-card">
+      <h3>Programmatic init via window.FloatingWidget.init</h3>
+      <div id="host-programmatic"></div>
+    </div>
+
+    <script>
+      // Programmatic init after the auto-init script has loaded
+      window.addEventListener('load', function () {
+        if (window.FloatingWidget && typeof window.FloatingWidget.init === 'function') {
+          window.FloatingWidget.init({
+            containerId: 'host-programmatic',
+            apiKey: '',
+            apiEndpoint: '/api/widget',
+            theme: 'dark',
+            buttonText: 'Ask',
+            headerTitle: 'Widget Programmatic Init',
+            placeholder: 'Type your question'
+          });
+        } else {
+          console.error('FloatingWidget global not available');
+        }
+      });
+    </script>
+  </body>
+  </html>
+
+

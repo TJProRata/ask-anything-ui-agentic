@@ -1,0 +1,41 @@
+/*
+  Widget Shadow DOM base stylesheet
+  - Minimal reset to avoid host page interference
+  - CSS variables for theming (`--widget-*`)
+  - Primitive class hooks used by the widget shell
+  Note: App tokens mapping can be documented in docs/TOKENS.md later.
+*/
+
+/* Reset within Shadow Root */
+*, *::before, *::after { box-sizing: border-box; }
+:host, .widget-container { all: initial; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; }
+.widget-container { position: fixed; inset: auto; }
+
+/* Default theme variables (can be overridden via customStyles) */
+:host {
+  --widget-bg: #1f2937;          /* slate-800 */
+  --widget-text: #ffffff;        /* white */
+  --widget-primary: #60a5fa;     /* blue-400 */
+  --widget-border: #374151;      /* slate-700 */
+}
+
+/* Primitive structural styles; UI content uses Tailwind classes rendered inside */
+.floating-widget-button { cursor: pointer; }
+.floating-widget-panel {
+  background: var(--widget-bg);
+  color: var(--widget-text);
+  border: 1px solid var(--widget-border);
+  width: 320px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Basic focus states for a11y */
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--widget-primary);
+  outline-offset: 2px;
+}
+
+
