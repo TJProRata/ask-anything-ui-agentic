@@ -109,3 +109,8 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-<NONCE>'; 
 - The Next.js `/widgets` page also demonstrates both component and IIFE embed modes.
 
 
+## Further reading
+
+- Public API reference: `docs/WIDGET-API.md`
+- Tokens and theming: `docs/TOKENS.md`
+

@@ -10,7 +10,7 @@ Goal: Make `docs/` accurate, consistent with the codebase, and optimized for ret
 
 ### Quick Wins (Do Now)
 1. Update global API naming in docs
-   - Replace `window.MyWidget` with `window.FloatingWidget` everywhere.
+   - Ensure `window.FloatingWidget` is used everywhere.
    - Files: `docs/react-widget-architecture-docs.md`, `docs/PROJECT-OVERVIEW.md`.
 
 2. Correct build entrypoint references
@@ -62,7 +62,7 @@ Goal: Make `docs/` accurate, consistent with the codebase, and optimized for ret
 
 ### Proposed Edits (granular)
 - `docs/react-widget-architecture-docs.md`
-  - Rename `window.MyWidget` → `window.FloatingWidget` in code blocks and prose.
+  - Ensure `window.FloatingWidget` is used in code blocks and prose.
   - Replace `src/widget/index.tsx` → `scripts/initialize.widget.ts`.
   - Replace `widget.tailwind.css` → `styles/widget.css`.
   - Update API example payload to reflect role/content mapping.
@@ -86,7 +86,7 @@ Goal: Make `docs/` accurate, consistent with the codebase, and optimized for ret
 - Prefer small, self‑contained examples that reflect current code.
 
 ### Acceptance Criteria
-- No references to `window.MyWidget` remain; all use `window.FloatingWidget`.
+- All examples use `window.FloatingWidget`.
 - Build entrypoint references and integration examples point to `scripts/initialize.widget.ts` and the IIFE bundle.
 - A single doc clearly lists `WidgetConfig` and global API methods with file links.
 - Token and style SoT documented; CSS variable table exists.

@@ -1,13 +1,13 @@
-## React Widget Pipeline Prototype — TODO Tracker
+# React Widget Pipeline Prototype — TODO Tracker
 
 This checklist tracks implementation of the prototype plan. Use IDs to reference tasks in commits/PRs (e.g., "T-3"). Paths use repo-relative backticks for agent retrieval.
 
-### Legend
+## Legend
 
 - Status tags: [P1] high priority, [P2] medium, [P3] low; [BLOCKED] requires action.
 - Files are shown as backticked paths; acceptance are brief, testable criteria.
 
-### Quick Links
+## Quick Links
 
 - [Phase 0 — Baseline](#phase-0--baseline)
 - [Phase 1 — MVP embedding & isolation](#phase-1--mvp-embedding--isolation)
@@ -18,7 +18,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 0 — Baseline
+## Phase 0 — Baseline
 
 - [x] T-0.1 [P1] Verify build entry and format
   - Files: `scripts/build.widget.ts`
@@ -34,7 +34,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 1 — MVP embedding & isolation
+## Phase 1 — MVP Embedding & Isolation
 
 - [x] T-1.1 [P1] Add Shadow DOM stylesheet
   - Files: `styles/widget.css` (new)
@@ -62,7 +62,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 2 — Theming & types
+## Phase 2 — Theming & Types
 
 - [x] T-2.1 [P2] Token bridge starter
   - Files: `widgets/design-tokens.ts` (new)
@@ -78,7 +78,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 3 — Build quality & guidance
+## Phase 3 — Build Quality & Guidance
 
 - [x] T-3.1 [P2] Bundle build & size check
   - Files: `scripts/build.widget.ts`, output in `dist/`
@@ -95,7 +95,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 4 — Tests (pending approval)
+## Phase 4 — Tests (Pending Approval)
 
 - [x] T-4.1 [P1] Propose test deps (Bun test + Testing Library + happy-dom)
   - Files: `package.json`, `bunfig.toml`, `happydom.ts`, `testing-library.ts`
@@ -119,25 +119,25 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ---
 
-### Phase 5 — Docs alignment
+## Phase 5 — Docs Alignment
 
-- [ ] T-5.1 [P2] Embedding guide
-  - Files: `docs/INTEGRATION.md` (new)
+- [x] T-5.1 [P2] Embedding guide
+  - Files: `docs/INTEGRATION.md`
   - Acceptance: Script-tag auto-init; programmatic init; config reference from `widgets/types.ts`.
 
-- [ ] T-5.2 [P3] Normalize API naming in docs
+- [x] T-5.2 [P3] Normalize API naming in docs
   - Files: `docs/*`
   - Acceptance: All references use `window.FloatingWidget`; no `window.MyWidget` remains.
 
-- [ ] T-5.3 [P3] Optional references
-  - Files: `docs/WIDGET-API.md`, `docs/TOKENS.md` (new)
+- [x] T-5.3 [P3] Optional references
+  - Files: `docs/WIDGET-API.md`, `docs/TOKENS.md`
   - Acceptance: Concise references for public API and widget CSS variables.
 
 ---
 
-### Progress snapshot
+## Progress Snapshot
 
-- Completed: 16 / Open: 5 (per sections above).
+- Completed: 21 / Open: 0 (per sections above).
 - Update this section as tasks complete.
 
 

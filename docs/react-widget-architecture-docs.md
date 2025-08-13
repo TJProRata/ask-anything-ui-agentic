@@ -170,13 +170,13 @@ The build configuration uses Bun's native bundler with custom plugins:
 
 **Alternative Vite Configuration**: Provided for teams preferring Vite or needing specific Rollup plugins.
 
-### 2. Widget Entry Point (`src/widget/index.tsx`)
+### 2. Widget Entry Point (`scripts/initialize.widget.ts`)
 
 The entry point serves multiple critical functions:
 
 ```typescript
 // Responsibilities:
-1. Global namespace management (window.MyWidget)
+1. Global namespace management (window.FloatingWidget)
 2. Shadow DOM creation and management
 3. Style injection and isolation
 4. React root initialization
@@ -244,7 +244,7 @@ Custom hook for backend communication:
 - TypeScript-typed responses
 ```
 
-### 6. Styling System (`widget.tailwind.css`)
+### 6. Styling System (`styles/widget.css`)
 
 Tailwind CSS v4 configuration with:
 - CSS custom properties for theming
@@ -301,7 +301,7 @@ graph LR
 
 ### Deployment Strategy
 
-1. **Build Command**: `bun run build`
+1. **Build Command**: `bun run build:widget`
 2. **Output**: Single IIFE bundle with embedded styles
 3. **CDN Upload**: Deploy to edge CDN with proper headers
 4. **Versioning**: Use semantic versioning with CDN paths
@@ -333,7 +333,7 @@ Content-Encoding: gzip
 
 ```javascript
 // Programmatic initialization
-window.MyWidget.init({
+window.FloatingWidget.init({
   containerId: 'ai-widget',
   apiKey: 'your-api-key',
   theme: 'custom',
@@ -415,34 +415,28 @@ interface WidgetConfig {
   theme?: 'light' | 'dark' | 'custom';
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'center';
   customStyles?: Record<string, string>;
-  initialOpen?: boolean;
+  initialExpanded?: boolean;
   buttonText?: string;
   headerTitle?: string;
   placeholder?: string;
   
   // Callbacks
   onReady?: () => void;
-  onMessage?: (message: Message) => void;
-  onOpen?: () => void;
-  onClose?: () => void;
+  onMessage?: (message: WidgetMessage) => void;
+  onExpand?: () => void;
+  onCollapse?: () => void;
 }
 ```
 
 ### Global Methods
 
 ```typescript
-window.MyWidget = {
+window.FloatingWidget = {
   // Initialize a new widget instance
-  init(config: WidgetConfig): void;
-  
-  // Destroy a widget instance
-  destroy(containerId: string): void;
-  
-  // Update configuration
-  updateConfig(containerId: string, config: Partial<WidgetConfig>): void;
-  
+  init(config: WidgetConfig): void,
+
   // Access to all instances (readonly)
-  instances: Map<string, WidgetInstance>;
+  instances: Map<string, WidgetInstance>,
 };
 ```
 
