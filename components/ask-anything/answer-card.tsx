@@ -1,3 +1,3 @@
 
 // Main Flow `expandedAnswerTab`
-export function AnswerTab() {}
+export function AnswerCard() {}

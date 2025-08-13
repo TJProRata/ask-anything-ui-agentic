@@ -20,6 +20,7 @@ export default function Widgets() {
           placeholder: "Ask Anything",
         }}
       />
+      {/* TODO: Add built FloatingWidget embed via Next.js Script tag component */}
     </AppPage>
   );
 }

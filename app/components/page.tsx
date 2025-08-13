@@ -2,7 +2,7 @@ import { AppPage } from "@/components/app/app-page";
 import { ButtonIcon } from "@/components/ask-anything/button/button-icon";
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
-// import { AskButton } from "@/components/ask-anything/ask-button";
+import { AskButton } from "@/components/ask-anything/ask-button";
 
 // NOTE: This page is meant to display the entire UI component library (base UI components, Ask Anything UI components, etc.)
 
@@ -84,14 +84,14 @@ export default function Components() {
       </section>
 
       {/* Ask Anything Components (built using base components) */}
-      {/* <section className="flex flex-col gap-3">
+      <section className="flex flex-col gap-3">
         <h2 className="text-xl font-sans font-semibold">Ask Anything</h2>
         <div className="flex flex-col gap-3">
           <h3 className="w-fit font-semibold font-mono px-2 py-1 border rounded-sm bg-accent">AskButton</h3>
           <AskButton />
         </div>
         <span className="text-sm text-muted-foreground">🚧</span>
-      </section> */}
+      </section>
     </AppPage>
   );
 }
