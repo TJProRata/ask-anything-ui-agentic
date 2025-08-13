@@ -5,8 +5,8 @@ Critical review of the high‑level concepts in `docs/ui-ux-platform-concepts.md
 
 ### Executive Summary
 - **Strengths**: Clear Import → Transform → Deploy story; Shadow DOM isolation; IIFE bundling; practical embedding patterns; security/perf awareness; Figma alignment goals.
-- **Gaps**: Terminology drift (`window.MyWidget` vs `window.FloatingWidget`), outdated build references, token pipeline unimplemented, state mgmt proposal (Zustand) not used, and some doc claims ahead of code (multi‑instance roadmap, CSS extraction).
-- **Overall**: Concepts are directionally sound and well‑articulated, but need alignment with the current code to reduce ambiguity and accelerate implementation.
+- **Gaps (addressed)**: Terminology drift resolved — standardized on `window.FloatingWidget`; build entrypoints updated to `scripts/initialize.widget.ts`; token bridge documented in `widgets/design-tokens.ts` and `docs/TOKENS.md`.
+- **Overall**: Concepts are aligned with the implementation; docs reference the current code and integration patterns.
 
 ### Evidence Snapshots (code/doc excerpts)
 ```typescript:16:22:scripts/initialize.widget.ts
@@ -21,7 +21,7 @@ if (typeof window !== 'undefined') {
 
 ```typescript:334:347:docs/react-widget-architecture-docs.md
 // Programmatic initialization
-window.MyWidget.init({
+window.FloatingWidget.init({
   containerId: 'ai-widget',
   apiKey: 'your-api-key',
   theme: 'custom',
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
 - **Governance**: Add token naming/versioning guardrails and a brief review checklist (contrast checks, motion reduced mode) to reduce subjective drift.
 
 ### Detailed Feedback — React Widget Architecture (`react-widget-architecture-docs.md`)
-- **Global API naming mismatch**: Documentation uses `window.MyWidget`; implementation exposes `window.FloatingWidget`. Standardize on `window.FloatingWidget` across docs and examples.
+- **Global API naming mismatch**: Documentation previously used an alternate global name; implementation exposes `window.FloatingWidget`. Standardize on `window.FloatingWidget` across docs and examples.
 - **Entrypoint alignment**: Doc references `src/widget/index.tsx`; project uses `scripts/initialize.widget.ts` as entry and IIFE bundle. Update all references and diagrams accordingly.
 - **Shadow DOM styles**: Doc mentions `widget.tailwind.css`; code injects an inlined `widgetStyles` placeholder and intends to use `styles/widget.css`. Update doc to match and outline the planned extraction/generation path.
 - **Bundling strategy**: Doc claims “complete dependency bundling (including React)”. Current build config sets `external: []`, so React is bundled — aligns with claim. Keep a note about the ~50KB target and track real bundle size in CI (future).
@@ -95,7 +95,7 @@ export async function POST(request: Request) {
 - **Testing**: Strong intent; not yet configured. Emphasize Bun/Vitest plan and add minimal smoke tests for auto‑init and message roundtrip once dependencies are approved.
 
 ### Actionable Recommendations
-- **Unify public API name**: Use `window.FloatingWidget` everywhere and deprecate `window.MyWidget` naming in docs/examples.
+- **Unify public API name**: Use `window.FloatingWidget` everywhere and remove legacy naming from docs/examples.
 - **Align Embedding Docs**: Provide a minimal host‑page example reflecting IIFE auto‑init and `data-widget-config` parsing. Include the exact config interface from `widgets/types.ts`.
 - **Shadow DOM styles spec**: Document `styles/widget.css` as the source; show the CSS variables (`--widget-*`) that can be overridden by integrators.
 - **Token pipeline**: Keep manual phase explicit. Provide a small table mapping app tokens in `app/globals.css` to widget tokens in `styles/widget.css` for parity.

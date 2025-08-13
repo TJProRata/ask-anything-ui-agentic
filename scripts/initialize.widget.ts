@@ -21,20 +21,26 @@ if (typeof window !== 'undefined') {
   };
 }
 
-// Auto-initialize if data attributes are present
-document.addEventListener('DOMContentLoaded', () => {
-  const scriptTag = document.currentScript || 
-    document.querySelector('script[data-widget-config]');
-  
-  if (scriptTag) {
-    const configAttr = scriptTag.getAttribute('data-widget-config');
-    if (configAttr) {
-      try {
-        const config = JSON.parse(configAttr);
-        widgetManager.init(config);
-      } catch (e) {
-        console.error('Failed to parse widget config:', e);
-      }
-    }
+function autoInitFromScriptTag() {
+  const scriptTag = (document.currentScript as HTMLScriptElement | null) ||
+    (document.querySelector('script[data-widget-config]') as HTMLScriptElement | null);
+
+  if (!scriptTag) return;
+
+  const configAttr = scriptTag.getAttribute('data-widget-config');
+  if (!configAttr) return;
+
+  try {
+    const config = JSON.parse(configAttr) as WidgetConfig;
+    widgetManager.init(config);
+  } catch (e) {
+    console.error('Failed to parse widget config:', e);
   }
-});
+}
+
+// Auto-initialize whether DOM is already loaded or not
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', autoInitFromScriptTag);
+} else {
+  autoInitFromScriptTag();
+}

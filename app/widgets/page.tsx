@@ -1,5 +1,6 @@
 import { AppPage } from "@/components/app/app-page";
 import { FloatingWidget } from "@/components/widgets/floating-widget/floating-widget";
+import Script from "next/script";
 
 export default function Widgets() {
   return (
@@ -20,7 +21,25 @@ export default function Widgets() {
           placeholder: "Ask Anything",
         }}
       />
-      {/* TODO: Add built FloatingWidget embed via Next.js Script tag component */}
+      {/* IIFE Embed demo */}
+      <div className="mt-8 space-y-2">
+        <h4 className="text-sm font-medium">IIFE Embed Demo</h4>
+        <div id="iife-widget-container" />
+        <Script
+          id="floating-widget-iife"
+          src="/dist/widget.js"
+          strategy="afterInteractive"
+          data-widget-config={JSON.stringify({
+            containerId: "iife-widget-container",
+            apiKey: process.env.NEXT_PUBLIC_ASK_ANYTHING_API_KEY || "",
+            apiEndpoint: "/api/widget",
+            theme: "dark",
+            buttonText: "Ask",
+            headerTitle: "Ask New York Times Anything!",
+            placeholder: "Ask Anything",
+          })}
+        />
+      </div>
     </AppPage>
   );
 }

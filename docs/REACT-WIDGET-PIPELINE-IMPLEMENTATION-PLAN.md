@@ -1,10 +1,10 @@
-## React Widget Pipeline Prototype — Implementation Plan
+# React Widget Pipeline Prototype — Implementation Plan
 
-### Goal
+## Goal
 
 Deliver a working, embeddable MVP of the `FloatingWidget` as a third-party widget with Shadow DOM isolation, IIFE bundle, basic chat UI, and a local mock API for development. This plan converts the guidance in `docs/react-widget-pipeline-prototype.md` and linked docs into concrete, low-risk steps aligned with project rules (Bun, Next.js 15 App Router, React 19, Tailwind v4, no new packages without approval).
 
-### Sources of truth (code)
+## Sources of Truth (code)
 
 - `components/widgets/floating-widget/floating-widget.tsx`
 - `components/widgets/floating-widget/floating-widget-button.tsx`
@@ -17,19 +17,19 @@ Deliver a working, embeddable MVP of the `FloatingWidget` as a third-party widge
 - `app/api/widget/route.ts`
 - `app/widgets/page.tsx`
 
-### References (docs)
+## References (docs)
 
 - Prototype: `docs/react-widget-pipeline-prototype.md`
 - Architecture: `docs/react-widget-architecture-docs.md`
 - Overview/Review/Concepts: `docs/PROJECT-OVERVIEW.md`, `docs/PROJECT-REVIEW.md`, `docs/PROJECT-CONCEPTS.md`
 - Figma plan: `docs/FIGMA-INTEGRATION.md`
 
-### External references (version-appropriate)
+## External References (version-appropriate)
 
 - Next.js 15 App Router (Route Handlers, next/script, font, etc.): `https://github.com/vercel/next.js` (App Router docs; see examples for `route.ts`, `next/script`)
 - React 19 (createRoot, StrictMode, portals, RSC directives): `https://react.dev` (see createRoot, StrictMode, createPortal)
 
-### Guardrails and constraints
+## Guardrails and Constraints
 
 - Use Bun (latest) for builds/scripts; no new packages without approval.
 - TypeScript with semicolons and double quotes.
@@ -38,7 +38,7 @@ Deliver a working, embeddable MVP of the `FloatingWidget` as a third-party widge
 
 ---
 
-## Phase 0 — Baseline validation (no-op)
+## Phase 0 — Baseline Validation (no-op)
 
 - Build entrypoint: Verified `scripts/build.widget.ts` uses `scripts/initialize.widget.ts` and IIFE output.
 - API hook default: `hooks/use-widget-api.ts` defaults to `/api/widget` (good for dev).
@@ -50,7 +50,7 @@ Outcome: We can proceed to isolation styles, embed flow, and polish.
 
 ---
 
-## Phase 1 — MVP embedding and isolation
+## Phase 1 — MVP Embedding and Isolation
 
 ### 1. Shadow DOM style isolation
 
@@ -101,7 +101,7 @@ Acceptance:
 
 ---
 
-## Phase 2 — Theming, tokens, and configuration
+## Phase 2 — Theming, Tokens, and Configuration
 
 ### 5. Token bridge and theming
 
@@ -113,7 +113,7 @@ Acceptance:
 Acceptance:
 - Theme can be switched via `theme` and overridden via `customStyles`.
 
-### 6. Type hygiene and JSDoc
+### 6. Type Hygiene and JSDoc
 
 - Add concise JSDoc to public-facing types and components:
   - `widgets/types.ts` interfaces (`WidgetConfig`, `WidgetMessage`, `WidgetInstance`).
@@ -126,7 +126,7 @@ Acceptance:
 
 ---
 
-## Phase 3 — Build quality and measurements
+## Phase 3 — Build Quality and Measurements
 
 ### 7. Bundle validation
 
@@ -151,20 +151,22 @@ Acceptance:
 
 ## Phase 4 — Testing and QA (pending approval for dev deps)
 
-Per project rules, prefer Bun, Vitest, and Testing Library. Do not add packages until approved.
+Use Bun's built-in test runner with Testing Library and a happy-dom environment. Do not add packages until approved.
 
+- Tests live under `tests/` (not `__tests__/`).
 - Unit: `use-widget-api.ts` (success path, error path, headers/payload).
 - Component: `FloatingWidget` (toggle, ESC, callbacks), `FloatingWidgetCard` (input submit, loading indicator, error render, auto-scroll).
-- Integration (jsdom/happy-dom): `initialize.widget.ts` auto-init mounts, `window.FloatingWidget.init`, instance map behavior.
+- Integration (happy-dom): `initialize.widget.ts` auto-init mounts, `window.FloatingWidget.init`, instance map behavior.
 - Command targets after approval:
-  - Add `"test": "vitest"` script and run tests with `bun run test run`.
+  - Optional: add `"test": "bun test"` script; run tests with `bun test`.
+  - Configure `happy-dom` as the test environment (e.g., via a `tests/setup.ts`).
 
 Acceptance:
-- Smoke tests for core flows; green locally. Package additions gated by approval.
+- Smoke tests for core flows; green locally via `bun test`. Package additions gated by approval.
 
 ---
 
-## Phase 5 — Documentation alignment
+## Phase 5 — Documentation Alignment
 
 ### 9. New/updated docs
 
@@ -174,7 +176,7 @@ Acceptance:
   - Config reference from `widgets/types.ts` and theming overrides.
   - CSP notes and CDN guidance.
 - Normalize global API naming:
-  - Replace any `window.MyWidget` remnants with `window.FloatingWidget` in docs.
+  - Ensure all docs consistently use `window.FloatingWidget` as the global API name.
 - Optional follow-ups:
   - `docs/WIDGET-API.md` (public API + types),
   - `docs/TOKENS.md` (widget CSS vars and mapping to app tokens).
@@ -184,7 +186,7 @@ Acceptance:
 
 ---
 
-## File-level task checklist
+## File-level Task Checklist
 
 - New: `styles/widget.css` (Shadow DOM reset + `--widget-*` vars).
 - New: `widgets/design-tokens.ts` (starter map; no runtime deps).
@@ -195,7 +197,7 @@ Acceptance:
 
 ---
 
-## Risks and mitigations
+## Risks and Mitigations
 
 - Style leakage or missing resets: start with tight CSS; iterate only as needed.
 - CSP blocks injected `<style>` in Shadow DOM: document CSP allow-list strategies; offer nonce/hash guidance.
@@ -204,7 +206,7 @@ Acceptance:
 
 ---
 
-## Acceptance criteria (from prototype doc, refined)
+## Acceptance Criteria (from prototype doc, refined)
 
 - Built IIFE bundle initializes and mounts via script tag with `data-widget-config`.
 - Widget renders correctly inside Shadow DOM with isolated styles.
@@ -213,7 +215,7 @@ Acceptance:
 
 ---
 
-## Execution notes
+## Execution Notes
 
 - Use Bun for all scripts and builds.
 - Avoid adding packages without prior approval (testing stack will be proposed first).
@@ -221,7 +223,7 @@ Acceptance:
 
 ---
 
-## Next actions (sequence to start)
+## Next Actions (sequence to start)
 
 1) Add `styles/widget.css` and wire it in `widget-manager.tsx`.
 2) Light a11y/UX polish in `FloatingWidgetCard` (labels, small bubbles via CSS vars).

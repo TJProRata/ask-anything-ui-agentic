@@ -6,8 +6,14 @@ import type { WidgetConfig, WidgetMessage } from "@/widgets/types";
 import { FloatingWidgetButton } from "@/components/widgets/floating-widget/floating-widget-button";
 import { FloatingWidgetCard } from "@/components/widgets/floating-widget/floating-widget-card";
 
+/**
+ * Props for the FloatingWidget component.
+ */
 interface FloatingWidgetProps { config: WidgetConfig; }
 
+/**
+ * Chat widget UI rendered inside the Shadow DOM container.
+ */
 export function FloatingWidget({ config }: FloatingWidgetProps) {
   const {
     apiKey,
