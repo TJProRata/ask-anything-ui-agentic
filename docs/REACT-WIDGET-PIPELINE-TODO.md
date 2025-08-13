@@ -80,13 +80,18 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Phase 3 — Build quality & guidance
 
-- [ ] T-3.1 [P2] Bundle build & size check
+- [x] T-3.1 [P2] Bundle build & size check
   - Files: `scripts/build.widget.ts`, output in `dist/`
   - Acceptance: Successful build; log outputs; size recorded; CSS kept minimal.
+  - Result: Build succeeded via `bun run build:widget`. Current artifact sizes (dev machine):
+    - `public/dist/widget.h68jas2x.js` ≈ 236 KB (minified)
+    - `public/dist/widget.js` ≈ 236 KB (stable copy)
+    - Source map ≈ 1.0 MB
 
-- [ ] T-3.2 [P2] CSP & CDN guidance
+- [x] T-3.2 [P2] CSP & CDN guidance
   - Files: `docs/INTEGRATION.md` (new)
-  - Acceptance: Contains CSP hash/nonce examples, notes on Shadow DOM `<style>`, CDN headers/versioning tips.
+  - Acceptance: Contains CSP nonce example for Shadow DOM `<style>`, CDN headers/versioning tips.
+  - Result: Added `docs/INTEGRATION.md` with auto-init, programmatic init, config reference, theming, CSP (nonce), and CDN guidance.
 
 ---
 

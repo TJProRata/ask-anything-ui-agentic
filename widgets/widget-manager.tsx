@@ -26,6 +26,7 @@ export class WidgetManager {
     const {
       // apiKey,
       containerId,
+      cspNonce,
       theme = 'dark',
       position = 'bottom-right',
       customStyles = {},
@@ -51,6 +52,9 @@ export class WidgetManager {
     
     // Inject styles into Shadow DOM
     const styleElement = document.createElement('style');
+    if (cspNonce) {
+      styleElement.setAttribute('nonce', cspNonce);
+    }
     styleElement.textContent = `
 ${widgetStyles}
 

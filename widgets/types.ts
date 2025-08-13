@@ -10,6 +10,11 @@ export interface WidgetConfig {
   apiEndpoint?: string;
   theme?: WidgetTheme;
   customStyles?: Record<string, string>;
+  /**
+   * Optional CSP nonce to apply to the Shadow DOM <style> element injected by the widget.
+   * If your host uses a strict Content-Security-Policy, provide the same style nonce here.
+   */
+  cspNonce?: string;
   buttonText?: string;
   headerTitle?: string;
   position?:
