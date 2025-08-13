@@ -64,15 +64,15 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Phase 2 — Theming & types
 
-- [ ] T-2.1 [P2] Token bridge starter
+- [x] T-2.1 [P2] Token bridge starter
   - Files: `widgets/design-tokens.ts` (new)
   - Acceptance: Exposes a small map aligning app tokens to widget vars; documented mapping.
 
-- [ ] T-2.2 [P2] Theme override merge validation
+- [x] T-2.2 [P2] Theme override merge validation
   - Files: `widgets/widget-manager.tsx`
   - Acceptance: `generateThemeStyles` merges `customStyles` onto selected theme; verified visually.
 
-- [ ] T-2.3 [P2] JSDoc public APIs
+- [x] T-2.3 [P2] JSDoc public APIs
   - Files: `widgets/types.ts`, `widgets/widget-manager.tsx`, `components/widgets/floating-widget/floating-widget.tsx`
   - Acceptance: Concise JSDoc on public interfaces and methods; no inline noise.
 
@@ -128,7 +128,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Progress snapshot
 
-- Open tasks: 4 completed / remaining open per sections above.
+- Completed: 12 / Open: 9 (per sections above).
 - Update this section as tasks complete.
 
 

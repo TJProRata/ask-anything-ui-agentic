@@ -3,11 +3,25 @@ import { createRoot } from "react-dom/client";
 import type { WidgetConfig, WidgetInstance } from "@/widgets/types";
 import { FloatingWidget } from "@/components/widgets/floating-widget/floating-widget";
 import widgetStyles from "@/styles/widget.css";
+import {
+  type WidgetTheme,
+  type WidgetThemeTokens,
+  widgetThemePresets,
+  widgetCssVariables,
+  mergeThemeTokens,
+  tokensToHostCss,
+} from "@/widgets/design-tokens";
 
+/**
+ * Manages the lifecycle of embedded widget instances mounted inside a Shadow DOM.
+ */
 export class WidgetManager {
   public instances: Map<string, WidgetInstance> = new Map();
   // private instances: Map<string, WidgetInstance> = new Map();
   
+  /**
+   * Initialize and mount a widget instance with Shadow DOM isolation.
+   */
   init(config: WidgetConfig) {
     const {
       // apiKey,
@@ -76,6 +90,9 @@ ${this.generateThemeStyles(theme, customStyles)}
     onReady?.();
   }
   
+  /**
+   * Compute inline CSS rules for the chosen widget position.
+   */
   private getPositionStyles(position: string): string {
     const positions: Record<string, string> = {
       'bottom-right': 'bottom: 20px; right: 20px;',
@@ -87,31 +104,39 @@ ${this.generateThemeStyles(theme, customStyles)}
     return positions[position] || positions['bottom-right'];
   }
   
-  private generateThemeStyles(theme: string, customStyles: Record<string, string>): string {
-    const themes: Record<string, Record<string, string>> = {
-      light: {
-        '--widget-bg': '#ffffff',
-        '--widget-text': '#000000',
-        '--widget-primary': '#3b82f6',
-        '--widget-border': '#e5e7eb'
-      },
-      dark: {
-        '--widget-bg': '#1f2937',
-        '--widget-text': '#ffffff',
-        '--widget-primary': '#60a5fa',
-        '--widget-border': '#374151'
+  /**
+   * Generate a :host CSS block for the selected theme merged with optional overrides.
+   */
+  private generateThemeStyles(theme: WidgetTheme, customStyles: Record<string, string>): string {
+    const baseTheme: WidgetThemeTokens =
+      theme === 'light'
+        ? widgetThemePresets.light
+        : widgetThemePresets.dark; // default to dark for 'dark' and 'custom'
+
+    const filteredOverrides: Partial<WidgetThemeTokens> = this.normalizeCustomStyles(customStyles);
+
+    const merged = mergeThemeTokens(baseTheme, filteredOverrides);
+    return tokensToHostCss(merged);
+  }
+
+  /**
+   * Filter arbitrary overrides to allowed widget CSS variables only.
+   */
+  private normalizeCustomStyles(overrides: Record<string, string>): Partial<WidgetThemeTokens> {
+    const allowed = new Set<string>(widgetCssVariables as readonly string[]);
+    const result: Partial<WidgetThemeTokens> = {};
+    Object.entries(overrides).forEach(([key, value]) => {
+      if (allowed.has(key)) {
+        // @ts-expect-error index signature narrowed by runtime guard
+        result[key] = value;
       }
-    };
-    
-    const selectedTheme = { ...themes[theme], ...customStyles };
-
-    const declarations = Object.entries(selectedTheme)
-      .map(([key, value]) => `${key}: ${value};`)
-      .join('\n');
-
-    return `:host {\n${declarations}\n}`;
+    });
+    return result;
   }
   
+  /**
+   * Destroy/unmount a widget instance and clean its Shadow DOM.
+   */
   destroy(containerId: string) {
     const instance = this.instances.get(containerId);
     if (instance) {
@@ -121,6 +146,9 @@ ${this.generateThemeStyles(theme, customStyles)}
     }
   }
   
+  /**
+   * Update an existing widget instance with new configuration.
+   */
   updateConfig(containerId: string, newConfig: Partial<WidgetConfig>) {
     const instance = this.instances.get(containerId);
     if (instance) {
