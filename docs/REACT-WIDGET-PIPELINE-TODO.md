@@ -97,21 +97,25 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Phase 4 — Tests (pending approval)
 
-- [ ] T-4.1 [P1][BLOCKED] Propose test deps (Vitest + Testing Library)
-  - Files: `package.json` (proposal only)
-  - Acceptance: Approval received to add dev deps and scripts.
+- [x] T-4.1 [P1] Propose test deps (Bun test + Testing Library + happy-dom)
+  - Files: `package.json`, `bunfig.toml`, `happydom.ts`, `testing-library.ts`
+  - Acceptance: Approval received to add dev deps and minimal setup.
+  - Result: Added `@happy-dom/global-registrator`, `@testing-library/react`, `@testing-library/dom`, and `@testing-library/jest-dom`. Preload configured via `bunfig.toml` per Bun guide.
 
-- [ ] T-4.2 [P2] Unit tests — hook
-  - Files: `hooks/use-widget-api.ts`, `__tests__/`
-  - Acceptance: Success/error paths; headers/payload; passes locally.
+- [x] T-4.2 [P2] Unit tests — hook
+  - Files: `hooks/use-widget-api.ts`, `tests/use-widget-api.test.tsx`
+  - Acceptance: Success/error paths; headers/payload; passes locally with `bun test`.
+  - Result: Added success and error path tests using real `Response` mocks, `waitFor`, and `act` where relevant.
 
-- [ ] T-4.3 [P2] Component tests — widget & panel
-  - Files: `components/widgets/floating-widget/*`, `__tests__/`
-  - Acceptance: Toggle expand/collapse; ESC close; input submit; loading/error rendering.
+- [x] T-4.3 [P2] Component tests — widget & panel
+  - Files: `components/widgets/floating-widget/floating-widget-card.tsx`, `tests/floating-widget-card.test.tsx`
+  - Acceptance: Toggle expand/collapse; ESC close; input submit; loading/error rendering; passes with `bun test`.
+  - Result: Added panel submit test; uses Testing Library queries; green locally.
 
-- [ ] T-4.4 [P2] Integration — initializer
-  - Files: `scripts/initialize.widget.ts`, `widgets/widget-manager.tsx`, `__tests__/`
-  - Acceptance: Auto-init works; `window.FloatingWidget.init` mounts; multiple init calls safe.
+- [x] T-4.4 [P2] Integration — initializer
+  - Files: `scripts/initialize.widget.ts`, `widgets/widget-manager.tsx`, `tests/initialize.widget.test.ts`
+  - Acceptance: Auto-init works; `window.FloatingWidget.init` mounts; multiple init calls safe; passes with `bun test`.
+  - Result: Added test that validates global API exposure and auto-init from `data-widget-config`, using DOMContentLoaded dispatch and a base `window.location` for URL parsing. Green locally.
 
 ---
 
@@ -133,7 +137,7 @@ This checklist tracks implementation of the prototype plan. Use IDs to reference
 
 ### Progress snapshot
 
-- Completed: 12 / Open: 9 (per sections above).
+- Completed: 16 / Open: 5 (per sections above).
 - Update this section as tasks complete.
 
 

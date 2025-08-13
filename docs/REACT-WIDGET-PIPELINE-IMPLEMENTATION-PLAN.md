@@ -151,16 +151,18 @@ Acceptance:
 
 ## Phase 4 — Testing and QA (pending approval for dev deps)
 
-Per project rules, prefer Bun, Vitest, and Testing Library. Do not add packages until approved.
+Use Bun's built-in test runner with Testing Library and a happy-dom environment. Do not add packages until approved.
 
+- Tests live under `tests/` (not `__tests__/`).
 - Unit: `use-widget-api.ts` (success path, error path, headers/payload).
 - Component: `FloatingWidget` (toggle, ESC, callbacks), `FloatingWidgetCard` (input submit, loading indicator, error render, auto-scroll).
-- Integration (jsdom/happy-dom): `initialize.widget.ts` auto-init mounts, `window.FloatingWidget.init`, instance map behavior.
+- Integration (happy-dom): `initialize.widget.ts` auto-init mounts, `window.FloatingWidget.init`, instance map behavior.
 - Command targets after approval:
-  - Add `"test": "vitest"` script and run tests with `bun run test run`.
+  - Optional: add `"test": "bun test"` script; run tests with `bun test`.
+  - Configure `happy-dom` as the test environment (e.g., via a `tests/setup.ts`).
 
 Acceptance:
-- Smoke tests for core flows; green locally. Package additions gated by approval.
+- Smoke tests for core flows; green locally via `bun test`. Package additions gated by approval.
 
 ---
 
