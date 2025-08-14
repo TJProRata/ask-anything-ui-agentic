@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Widget Integration Example</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Basic Widget Integration</h1>
+        <p>This example demonstrates the simplest way to embed the Ask Anything widget on your page.</p>
+        
+        <div class="info">
+            <strong>How it works:</strong>
+            <ul>
+                <li>The widget container <code>&lt;div id="widget-container"&gt;</code> defines where the widget will mount</li>
+                <li>The script tag loads the widget bundle</li>
+                <li>The <code>data-widget-config</code> attribute contains the configuration as JSON</li>
+                <li>The widget automatically initializes when the script loads</li>
+            </ul>
+        </div>
+
+        <h2>Try it out</h2>
+        <p>Click the button in the bottom-right corner to open the widget and start chatting!</p>
+
+        <h2>Integration Code</h2>
+        <pre><code>&lt;!-- Widget Container --&gt;
+&lt;div id="widget-container"&gt;&lt;/div&gt;
+
+&lt;!-- Widget Script --&gt;
+&lt;script 
+    src="/dist/widget.js"
+    data-widget-config='{
+        "containerId": "widget-container",
+        "apiKey": "demo-key",
+        "theme": "light",
+        "position": "bottom-right"
+    }'&gt;
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <!-- Widget Integration -->
+    <div id="widget-container"></div>
+    <script 
+        src="/dist/widget.js"
+        data-widget-config='{
+            "containerId": "widget-container",
+            "apiKey": "demo-key",
+            "theme": "light",
+            "position": "bottom-right",
+            "headerTitle": "Ask Anything",
+            "placeholder": "Type your message...",
+            "buttonText": "Ask"
+        }'>
+    </script>
+</body>
+</html>
