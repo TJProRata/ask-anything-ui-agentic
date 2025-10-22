@@ -50,6 +50,35 @@ npm run start
 - [shadcn/ui](https://ui.shadcn.com/docs)
 - [Motion (prev Framer Motion)](https://motion.dev/docs/react)
 
+## AI Developer Workflow (ADW)
+
+This project uses ADW for automated GitHub issue processing.
+
+### Quick Start
+
+Process a GitHub issue:
+```bash
+cd adws/
+uv run adw_plan_build.py <issue-number>
+```
+
+### Available Commands
+
+- `uv run adw_plan.py <issue>` - Generate implementation plan
+- `uv run adw_build.py` - Implement existing plan
+- `uv run adw_test.py <issue>` - Run tests and report results
+- `uv run adw_plan_build_test.py <issue>` - Full pipeline
+
+### Monitoring
+
+Start continuous monitoring:
+```bash
+cd adws/
+uv run adw_triggers/trigger_cron.py
+```
+
+For details, see [adws/README.md](adws/README.md)
+
 ### `docs/` (Project Docs)
 
 **`docs/widgets/floating-widget/`**:

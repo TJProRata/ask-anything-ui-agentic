@@ -1,0 +1,25 @@
+[project]
+name = "adws"
+version = "0.1.0"
+description = "AI Developer Workflow automation for ask-anything-ui"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "ruff>=0.1.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["adw_tests"]
+python_files = ["test_*.py"]
