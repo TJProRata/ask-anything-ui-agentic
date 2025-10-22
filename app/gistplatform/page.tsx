@@ -7,7 +7,7 @@ import { log } from "@/lib/logger";
 import type { CreatePreviewResponse } from "@/components/widgets/onboarding-widget/types";
 
 /**
- * Gist Platform Entry Page
+ * Gist Builder Entry Page
  * Entry point for users to create their shareable mini-sites (gists)
  * Uses the gist creation widget to collect user information through a 10-step flow
  */
@@ -18,7 +18,7 @@ export default function GistPlatformPage() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    log.init("Gist Platform page loaded");
+    log.init("Gist Builder page loaded");
   }, []);
 
   const handleGistCreated = (data: CreatePreviewResponse) => {
@@ -42,7 +42,7 @@ export default function GistPlatformPage() {
         {/* Page Header */}
         <div className="mb-8 text-center">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Create Your Gist
+            Gist Builder
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Build a shareable mini-site in minutes. Answer a few questions and

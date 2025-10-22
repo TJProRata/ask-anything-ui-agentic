@@ -15,7 +15,7 @@ Implemented a production-ready 10-step onboarding widget for creating shareable 
 - **gist-templates Module** - Template generation utilities for dynamic hero and tile content
 - **Content Generator** - Enhanced generator with template-based content creation
 - **API Endpoint** - `/api/create-preview` route with full request handling and Convex integration
-- **Gist Platform Page** - Entry page at `/gistplatform` for users to create gists
+- **Gist Builder Page** - Entry page at `/gistplatform` for users to create gists
 - **Preview Pages** - Dynamic routes for viewing generated gists at `/preview/[slug]`
 - **Convex Schema** - Database schema for storing gists with hero and tile data
 

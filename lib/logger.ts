@@ -1,5 +1,5 @@
 /**
- * Structured logging utility for the Gist Platform
+ * Structured logging utility for the Gist Builder
  * Provides consistent logging with prefixes and timestamps
  */
 

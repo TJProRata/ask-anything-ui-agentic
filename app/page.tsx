@@ -16,19 +16,19 @@ export default function Home() {
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-          {/* Gist Platform */}
+          {/* Gist Builder */}
           <Link href="/gistplatform">
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition cursor-pointer border-2 border-purple-100 hover:border-purple-300">
               <div className="text-4xl mb-4">🎨</div>
               <h2 className="text-2xl font-bold mb-3 text-gray-900">
-                Gist Platform
+                Gist Builder
               </h2>
               <p className="text-gray-600 mb-4">
                 Create shareable mini-sites at custom URLs. Perfect for
                 personal landing pages, product showcases, and quick sites.
               </p>
               <div className="text-purple-600 font-semibold">
-                Create Your Gist →
+                Gist Builder →
               </div>
             </div>
           </Link>

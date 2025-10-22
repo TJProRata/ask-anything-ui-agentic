@@ -1,7 +1,7 @@
-# Feature: Gist Platform Infrastructure Setup
+# Feature: Gist Builder Infrastructure Setup
 
 ## Feature Description
-Establish the foundational infrastructure for the Gist Platform - a system that enables users to create shareable mini-sites (called "gists") at auto-provisioned URLs. This setup phase lays the groundwork for all subsequent features by integrating Convex as the real-time database, establishing logging/observability, creating API route stubs, and configuring the Next.js application with proper TypeScript paths and environment variables.
+Establish the foundational infrastructure for the Gist Builder - a system that enables users to create shareable mini-sites (called "gists") at auto-provisioned URLs. This setup phase lays the groundwork for all subsequent features by integrating Convex as the real-time database, establishing logging/observability, creating API route stubs, and configuring the Next.js application with proper TypeScript paths and environment variables.
 
 The infrastructure provides:
 - **Convex Database Integration**: Real-time TypeScript-native database with schema for gists
@@ -277,10 +277,10 @@ IMPORTANT: Execute every step in order, top to bottom.
 ### 13. Create Gist Platform Entry Page
 - Create `app/gistplatform/page.tsx` as client component
 - Import and render onboarding widget (adapt from `/onboarding` pattern)
-- Add heading: "Create Your Gist"
+- Add heading: "Gist Builder"
 - Add subheading explaining the platform
 - Use existing `OnboardingWidget` component
-- Import logger and call `log.init("Gist Platform page loaded")`
+- Import logger and call `log.init("Gist Builder page loaded")`
 - Style with Tailwind CSS utilities
 
 ### 14. Create Dynamic Slug Route Stub
@@ -430,7 +430,7 @@ open http://localhost:3000
 # 5. Visit gist platform entry
 open http://localhost:3000/gistplatform
 # → Should render onboarding widget
-# → Terminal should show [INIT] Gist Platform page loaded
+# → Terminal should show [INIT] Gist Builder page loaded
 
 # 6. Test API health check
 curl http://localhost:3000/api/create-preview -X POST
