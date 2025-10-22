@@ -110,5 +110,13 @@
     "permission_mode": "default",
     "hook_event_name": "SubagentStop",
     "stop_hook_active": false
+  },
+  {
+    "session_id": "bfb4ca0d-e9fb-427e-92d6-8ed63a60474f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/bfb4ca0d-e9fb-427e-92d6-8ed63a60474f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false
   }
 ]
