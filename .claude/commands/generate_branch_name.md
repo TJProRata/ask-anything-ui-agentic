@@ -1,65 +1,36 @@
 # Generate Git Branch Name
 
-Generate and create a new git branch with a consistent naming convention.
-
-## Usage
-
-**Simple Format** (recommended):
-```
-/generate_branch_name {category} {name}
-```
-
-**All Parameters Optional**:
-```
-/generate_branch_name              # Interactive prompting
-/generate_branch_name feat         # Category only, prompt for name
-/generate_branch_name feat my-feature  # Full specification
-```
+Based on the `Instructions` below, take the `Variables` follow the `Run` section to generate a concise Git branch name following the specified format. Then follow the `Report` section to report the results of your work.
 
 ## Variables
 
-- `$1` - category (optional): feat, bug, fix, chore, docs, style, refactor, test, perf, ci, build
-- `$2+` - name (optional): descriptive branch name (rest of arguments joined)
+issue_class: $1
+adw_id: $2
+issue: $3
 
 ## Instructions
 
-**Branch Format**: `{category}/{name}`
-
-**Category Options**:
-- `feat` - New features
-- `bug` or `fix` - Bug fixes
-- `chore` - Maintenance tasks
-- `docs` - Documentation changes
-- `style` - Code style/formatting
-- `refactor` - Code refactoring
-- `test` - Test additions/changes
-- `perf` - Performance improvements
-- `ci` - CI/CD changes
-- `build` - Build system changes
-
-**Name Guidelines**:
-- All lowercase
-- Words separated by hyphens
-- 2-6 words maximum
-- Descriptive of the task
-- No special characters except hyphens
-
-**Examples**:
-- `feat/add-user-authentication`
-- `bug/fix-login-error`
-- `chore/update-dependencies`
-- `docs/api-reference-update`
-- `refactor/simplify-widget-api`
+- Generate a branch name in the format: `<issue_class>-issue-<issue_number>-adw-<adw_id>-<concise_name>`
+- The `<concise_name>` should be:
+  - 3-6 words maximum
+  - All lowercase
+  - Words separated by hyphens
+  - Descriptive of the main task/feature
+  - No special characters except hyphens
+- Examples:
+  - `feat-issue-123-adw-a1b2c3d4-add-user-auth`
+  - `bug-issue-456-adw-e5f6g7h8-fix-login-error`
+  - `chore-issue-789-adw-i9j0k1l2-update-dependencies`
+  - `test-issue-323-adw-m3n4o5p6-fix-failing-tests`
+- Extract the issue number, title, and body from the issue JSON
 
 ## Run
 
-1. If no category provided, prompt user for category
-2. If no name provided, prompt user for descriptive name
-3. Normalize inputs (lowercase, replace spaces with hyphens)
-4. Run `git checkout main`
-5. Run `git pull`
-6. Run `git checkout -b {category}/{name}`
+Run `git checkout main` to switch to the main branch
+Run `git pull` to pull the latest changes from the main branch
+Run `git checkout -b <branch_name>` to create and switch to the new branch
 
 ## Report
 
-Return ONLY the branch name that was created (no additional text or explanation)
+After generating the branch name:
+Return ONLY the branch name that was created (no other text)
