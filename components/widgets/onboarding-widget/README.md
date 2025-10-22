@@ -1,6 +1,8 @@
 # OnboardingWidget
 
-Interactive multi-phase onboarding experience with AI-powered assistance, progress tracking, and voice testing capabilities.
+Interactive multi-phase onboarding experience with AI-powered assistance, progress tracking, and voice testing capabilities. This widget serves as a **demo/showcase component** to demonstrate UI patterns and animations.
+
+> **Note**: For production gist creation workflows, use the **[GistCreationWidget](../gist-creation-widget/)** component instead, which provides a specialized 10-step flow with API integration and Convex database persistence.
 
 ## Features
 
@@ -13,6 +15,8 @@ Interactive multi-phase onboarding experience with AI-powered assistance, progre
 - 📱 Fully responsive design
 
 ## Usage
+
+### Demo Mode (Default)
 
 ```tsx
 import { OnboardingWidget } from "@/components/widgets/onboarding-widget/onboarding-widget";

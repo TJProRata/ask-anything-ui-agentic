@@ -1,20 +1,40 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import OnboardingWidget from "@/components/widgets/onboarding-widget/onboarding-widget";
+import { useRouter } from "next/navigation";
+import { GistCreationWidget } from "@/components/widgets/gist-creation-widget/gist-creation-widget";
 import { log } from "@/lib/logger";
+import type { CreatePreviewResponse } from "@/components/widgets/onboarding-widget/types";
 
 /**
  * Gist Platform Entry Page
  * Entry point for users to create their shareable mini-sites (gists)
- * Uses the onboarding widget to collect user information
+ * Uses the gist creation widget to collect user information through a 10-step flow
  */
 export default function GistPlatformPage() {
-  const [isExpanded, setIsExpanded] = useState(true); // Start expanded for gist creation flow
+  const router = useRouter();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   useEffect(() => {
     log.init("Gist Platform page loaded");
   }, []);
+
+  const handleGistCreated = (data: CreatePreviewResponse) => {
+    log.api(`Gist creation complete: ${data.slug}`);
+    setPreviewUrl(data.previewUrl);
+    setShowSuccess(true);
+
+    // Redirect to preview after showing success message
+    setTimeout(() => {
+      router.push(data.previewUrl);
+    }, 2000);
+  };
+
+  const handleStepChange = (step: number) => {
+    log.api(`User reached step ${step}`);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50 p-4">
@@ -58,13 +78,28 @@ export default function GistPlatformPage() {
           </div>
         </div>
 
-        {/* Onboarding Widget */}
+        {/* Gist Creation Widget */}
         <div className="flex justify-center">
-          <OnboardingWidget
+          <GistCreationWidget
             isExpanded={isExpanded}
             onExpandChange={setIsExpanded}
+            onComplete={handleGistCreated}
+            onStepChange={handleStepChange}
           />
         </div>
+
+        {/* Success Message */}
+        {showSuccess && previewUrl && (
+          <div className="mt-8 p-6 bg-green-50 border border-green-200 rounded-lg text-center">
+            <div className="text-4xl mb-2">🎉</div>
+            <h3 className="text-xl font-semibold text-green-800 mb-2">
+              Your gist is ready!
+            </h3>
+            <p className="text-green-700 mb-4">
+              Redirecting to your preview...
+            </p>
+          </div>
+        )}
 
         {/* Footer Note */}
         <div className="mt-8 text-center text-sm text-gray-500">

@@ -329,12 +329,13 @@ export function GistCreationWidget({
     // Handle more button click
   };
 
-  if (!isExpanded) {
-    return null;
-  }
-
   return (
-    <GlassWidgetContainer className="w-full max-w-2xl mx-auto">
+    <GlassWidgetContainer
+      className="w-full max-w-2xl mx-auto"
+      isExpanded={isExpanded}
+      onExpandChange={onExpandChange}
+      positioning="relative"
+    >
       <GlassWidgetHeader>
         <div className="flex items-center justify-between w-full">
           <Button
@@ -369,7 +370,7 @@ export function GistCreationWidget({
         <SimpleProgressBar currentPhase={currentStep - 1} totalPhases={PHASES.length} />
       </GlassWidgetHeader>
 
-      <GlassWidgetContent className="min-h-[400px]">
+      <GlassWidgetContent>
         <AnimatePresence mode="wait">
           {isSubmitting ? (
             <motion.div
@@ -399,6 +400,7 @@ export function GistCreationWidget({
           ) : (
             <motion.div
               key={currentStep}
+              layout
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -454,14 +456,24 @@ export function GistCreationWidget({
                     </div>
                   </GradientBorderContainer>
 
-                  {currentPhase.field === "title" && state.slug && (
-                    <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                      <p className="text-xs text-gray-500 mb-1">Your gist URL:</p>
-                      <p className="text-sm text-gray-700 font-mono">
-                        gist.link/{state.slug}
-                      </p>
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {currentPhase.field === "title" && state.slug && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                          <p className="text-xs text-gray-500 mb-1">Your gist URL:</p>
+                          <p className="text-sm text-gray-700 font-mono">
+                            gist.link/{state.slug}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </form>
               ) : (
                 <div className="flex flex-col">
@@ -518,19 +530,39 @@ export function GistCreationWidget({
                 </div>
               )}
 
-              {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-sm text-red-700">{error}</p>
-                </div>
-              )}
+              <AnimatePresence initial={false}>
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-sm text-red-700">{error}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-              {errors.length > 0 && currentPhase.isSubmitStep && (
-                <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <p className="text-sm text-yellow-700">
-                    {errors.join(", ")}
-                  </p>
-                </div>
-              )}
+              <AnimatePresence initial={false}>
+                {errors.length > 0 && currentPhase.isSubmitStep && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-sm text-yellow-700">
+                        {errors.join(", ")}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>

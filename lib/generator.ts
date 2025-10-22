@@ -39,60 +39,53 @@ export interface GeneratedContent {
  * Generate gist content from scraped data
  *
  * TODO: Implement AI-powered content generation
- * Current implementation returns mock data for development
+ * Current implementation uses template-based mock data
  *
  * @param scrapedData - Metadata scraped from source URL
  * @param type - Type of gist (person, product, place)
  * @param goal - Primary goal (book, buy, waitlist)
+ * @param title - User-provided title
+ * @param audience - Target audience
+ * @param vibe - Tone preference
  * @returns GeneratedContent - Hero and tiles for the mini-site
  *
  * @example
- * const content = generateGistContent(scrapedData, "person", "book");
- * console.log(content.hero.headline); // "Welcome to My Site"
+ * const content = generateGistContent(scrapedData, "person", "book", "John Doe", "prospects", "professional");
+ * console.log(content.hero.headline); // "John Doe - Professionals Expert"
  */
 export function generateGistContent(
   scrapedData: ScrapedData,
   type: "person" | "product" | "place",
-  goal: "book" | "buy" | "waitlist"
+  goal: "book" | "buy" | "waitlist",
+  title: string,
+  audience: "prospects" | "fans" | "investors",
+  vibe: "friendly" | "professional" | "bold"
 ): GeneratedContent {
   log.gen(`Generating content for ${type} gist with ${goal} goal`);
 
-  // TODO: Implement real AI-powered content generation
-  // For now, return mock data based on scraped input
+  // Import template utilities
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const templates = require("./gist-templates");
+  const {
+    generateHeroHeadline,
+    generateHeroSubhead,
+    generateTilesForType,
+    applyVibeStyling,
+  } = templates;
+
+  const styling = applyVibeStyling(vibe);
 
   const hero: HeroData = {
-    headline: scrapedData.title || "Welcome to My Gist",
-    subhead:
-      scrapedData.description ||
-      "Discover everything you need to know in one place",
-    style: "gradient", // Could be: gradient, image, solid
+    headline: generateHeroHeadline(type, title, audience),
+    subhead: generateHeroSubhead(goal, vibe),
+    style: styling.tone, // Use vibe-based styling
     media_url: scrapedData.og_image,
     cta: getCtaText(goal),
   };
 
-  const tiles: TileData[] = [
-    {
-      id: "1",
-      kind: "text",
-      title: "About",
-      content:
-        "This is a generated content tile. In production, this would contain actual content from the source URL.",
-    },
-    {
-      id: "2",
-      kind: "link",
-      title: "Learn More",
-      content: "Visit our website for more information",
-    },
-    {
-      id: "3",
-      kind: "text",
-      title: "Contact",
-      content: "Get in touch with us for inquiries",
-    },
-  ];
+  const tiles: TileData[] = generateTilesForType(type);
 
-  log.gen(`Generated ${tiles.length} content tiles`);
+  log.gen(`Generated ${tiles.length} content tiles for ${type}`);
 
   return { hero, tiles };
 }

@@ -478,6 +478,7 @@ export default function OnboardingWidget({ isExpanded, onExpandChange }: Onboard
             {currentPhaseData.description && (
               <div className="space-y-1">
                 <StreamingText
+                  key={`streaming-${currentPhase}`}
                   text={currentPhaseData.description}
                   className="text-sm text-text-primary leading-description break-words"
                   onComplete={() => setIsStreaming(false)}

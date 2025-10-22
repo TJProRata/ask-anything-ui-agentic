@@ -558,5 +558,421 @@
     "permission_mode": "bypassPermissions",
     "hook_event_name": "Stop",
     "stop_hook_active": false
+  },
+  {
+    "session_id": "bfb4ca0d-e9fb-427e-92d6-8ed63a60474f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/bfb4ca0d-e9fb-427e-92d6-8ed63a60474f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "bfb4ca0d-e9fb-427e-92d6-8ed63a60474f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/bfb4ca0d-e9fb-427e-92d6-8ed63a60474f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "acf0706b-13c8-496c-bd30-e0d4be4a6de9",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/acf0706b-13c8-496c-bd30-e0d4be4a6de9.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "3ddda4df-38c2-4593-ba8f-eb37c703a25f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/3ddda4df-38c2-4593-ba8f-eb37c703a25f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "3ddda4df-38c2-4593-ba8f-eb37c703a25f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/3ddda4df-38c2-4593-ba8f-eb37c703a25f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "3ddda4df-38c2-4593-ba8f-eb37c703a25f",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/3ddda4df-38c2-4593-ba8f-eb37c703a25f.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "84c4f4dd-df96-4a42-9717-cada3aaec6b5",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/84c4f4dd-df96-4a42-9717-cada3aaec6b5.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "2ecbcc47-6861-4dbd-9f71-af8d84e568a2",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/2ecbcc47-6861-4dbd-9f71-af8d84e568a2.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "2ecbcc47-6861-4dbd-9f71-af8d84e568a2",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/2ecbcc47-6861-4dbd-9f71-af8d84e568a2.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "2ecbcc47-6861-4dbd-9f71-af8d84e568a2",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/2ecbcc47-6861-4dbd-9f71-af8d84e568a2.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "f48d5009-9292-4eff-a8aa-f08b16d44a88",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/f48d5009-9292-4eff-a8aa-f08b16d44a88.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "f48d5009-9292-4eff-a8aa-f08b16d44a88",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/f48d5009-9292-4eff-a8aa-f08b16d44a88.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "7a9142d4-6c06-4830-93a0-528443ce5665",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/7a9142d4-6c06-4830-93a0-528443ce5665.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "32adfe5d-1216-42e6-a1a2-692796cc4c03",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/32adfe5d-1216-42e6-a1a2-692796cc4c03.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "32adfe5d-1216-42e6-a1a2-692796cc4c03",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/32adfe5d-1216-42e6-a1a2-692796cc4c03.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "32adfe5d-1216-42e6-a1a2-692796cc4c03",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/32adfe5d-1216-42e6-a1a2-692796cc4c03.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "32adfe5d-1216-42e6-a1a2-692796cc4c03",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/32adfe5d-1216-42e6-a1a2-692796cc4c03.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  },
+  {
+    "session_id": "16aba3ad-d85d-496a-b752-ca7e4ef052e4",
+    "transcript_path": "/Users/tjmcgovern/.claude/projects/-Users-tjmcgovern-ask-anything-ui/16aba3ad-d85d-496a-b752-ca7e4ef052e4.jsonl",
+    "cwd": "/Users/tjmcgovern/ask-anything-ui",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
   }
 ]
