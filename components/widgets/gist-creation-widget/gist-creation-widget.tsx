@@ -350,7 +350,7 @@ export function GistCreationWidget({
 
           <div className="flex-1 text-center">
             <h2 className="text-lg font-semibold text-gray-900">
-              Create Your Gist
+              Gist Builder
             </h2>
             <p className="text-sm text-gray-600">
               Step {currentStep} of {PHASES.length}

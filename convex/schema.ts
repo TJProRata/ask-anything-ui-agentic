@@ -2,7 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 /**
- * Convex schema for the Gist Platform
+ * Convex schema for the Gist Builder
  * Defines the structure of data stored in the database
  */
 export default defineSchema({

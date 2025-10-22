@@ -180,7 +180,7 @@ Transform the onboarding experience into a dual-mode widget system:
 6. Add API integration tests
 
 ### Phase 3: Integration (Page Updates & User Flow)
-**Goal**: Wire up gist platform page and end-to-end user journey.
+**Goal**: Wire up Gist Builder page and end-to-end user journey.
 
 1. Update `/gistplatform` page with gist-creation variant
 2. Implement submission handlers and redirect logic
@@ -428,7 +428,7 @@ IMPORTANT: Execute every step in order, top to bottom.
 - Add comprehensive error handling and logging
 - Return proper HTTP status codes
 
-### 11. Update Gist Platform Page
+### 11. Update Gist Builder Page
 - Update `app/gistplatform/page.tsx`
 - Change widget to use gist-creation variant:
   ```tsx
@@ -580,7 +580,7 @@ IMPORTANT: Execute every step in order, top to bottom.
   - Test onComplete callback invoked with correct data
   - Test loading/error states render appropriately
 
-- **Gist Platform Page** (`tests/app/gistplatform.test.ts`):
+- **Gist Builder Page** (`tests/app/gistplatform.test.ts`):
   - Test page renders with gist-creation variant widget
   - Test redirect to preview URL after successful submission
   - Test error message display on API failure
