@@ -22,21 +22,20 @@ export const MobileDeviceFrame: React.FC<MobileDeviceFrameProps> = ({
   // Future: Add Android variant support
   console.log(`Rendering device frame with variant: ${variant}`);
   return (
-    <div className={cn("flex justify-center items-center p-4", className)}>
-      {/* Device Frame Container */}
+    <div className={cn("flex justify-center items-center", className)}>
+      {/* Device Frame Container - Fixed Height 475px */}
       <div
         className={cn(
-          // Device frame dimensions (iPhone-like aspect ratio)
-          "relative w-full max-w-[375px]",
-          "aspect-[375/812]", // iPhone dimensions ratio
+          // Fixed device frame dimensions
+          "relative w-full max-w-[375px] h-[475px]",
           
-          // Visual styling
-          "bg-black rounded-[40px] p-3",
-          "shadow-[0_20px_60px_rgba(0,0,0,0.25)]",
+          // Glassmorphism styling instead of black
+          "bg-white/20 backdrop-blur-md rounded-[40px] p-3",
+          "border border-white/30",
+          "shadow-[0_20px_60px_rgba(0,0,0,0.15)]",
           
           // Responsive behavior
           "mx-auto",
-          "max-h-[90vh]", // Prevent overflow on small screens
           
           // Smooth transitions
           "transition-all duration-300 ease-out"
@@ -75,11 +74,11 @@ export const MobileDeviceFrame: React.FC<MobileDeviceFrameProps> = ({
           </div>
         </div>
 
-        {/* Screen Content Area */}
+        {/* Screen Content Area - Fixed Height for Internal Scrolling */}
         <div 
           className={cn(
-            "relative w-full flex-1 bg-white rounded-[32px] overflow-hidden",
-            "min-h-0", // Allows flex child to shrink
+            "relative w-full bg-white rounded-[32px] overflow-hidden",
+            "h-[400px]", // Fixed height to fit within 475px frame (allowing for status bar and home indicator)
             // Focus outline for accessibility
             "focus-within:ring-2 focus-within:ring-blue-400 focus-within:ring-opacity-75"
           )}

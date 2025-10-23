@@ -17,8 +17,14 @@ export interface DemoMicrositeProps {
  */
 export const DemoMicrosite: React.FC<DemoMicrositeProps> = ({ className }) => {
   return (
-    <div className={cn("w-full h-full bg-white overflow-y-auto", className)}>
-      {/* Header Navigation */}
+    <div className={cn("w-full h-full bg-white flex flex-col", className)}>
+      {/* Scrollable Content Container */}
+      <div className="flex-1 overflow-y-auto" 
+           style={{
+             scrollbarWidth: 'thin',
+             scrollbarColor: 'rgba(0,0,0,0.2) transparent'
+           }}>
+        {/* Header Navigation */}
       <header className="bg-white border-b border-gray-100 p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -119,6 +125,7 @@ export const DemoMicrosite: React.FC<DemoMicrositeProps> = ({ className }) => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };
