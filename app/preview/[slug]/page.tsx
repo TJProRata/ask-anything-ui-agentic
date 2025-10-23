@@ -19,8 +19,10 @@ export default async function PreviewGistPage({ params }: PageProps) {
 
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-white">Loading preview...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ 
+        background: 'linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%)' 
+      }}>
+        <div className="text-gray-900">Loading preview...</div>
       </div>
     }>
       <PreviewPageClient slug={slug} />

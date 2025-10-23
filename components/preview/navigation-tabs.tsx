@@ -1,6 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { BlueStar } from "@/components/icons/blue-star";
+import { Wand } from "@/components/icons/wand";
 import { cn } from "@/lib/utils";
 import { 
   ArrowRightIcon, 
@@ -10,7 +13,7 @@ import {
   SlidersHorizontalIcon, 
   TypeIcon 
 } from "lucide-react";
-import React from "react";
+import React, { Fragment } from "react";
 
 export interface NavigationTab {
   id: string;
@@ -84,68 +87,59 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   };
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-center gap-6">
-        {tabs.map((tab) => (
-          <div key={tab.id} className="flex flex-col items-center gap-2">
-            {/* Tab Button */}
-            <div className="relative">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => handleTabClick(tab)}
-                className={cn(
-                  // Base styling
-                  "relative text-gray-400 hover:text-white hover:bg-gray-800/50",
-                  "transition-all duration-200 rounded-xl",
-                  "hover:scale-105 active:scale-95", // Subtle animations
-                  "focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50",
-                  
-                  // Special styling for Arrow button
-                  tab.special && [
-                    "w-12 h-12 bg-gray-800/50 text-gray-300",
-                    "hover:bg-gray-700/50 hover:text-white hover:shadow-lg",
-                    "rounded-full" // Circular for arrow
-                  ],
-                  
-                  // Default styling for other buttons
-                  !tab.special && [
-                    "w-10 h-10 min-h-[44px] min-w-[44px]" // Touch-friendly sizing
-                  ]
-                )}
-                aria-label={tab.label}
-              >
-                {tab.icon}
-              </Button>
+    <div className={cn("flex flex-col shrink-0", className)}>
+      {/* Suggestion Buttons styled like onboarding widget */}
+      {tabs.map((tab, index) => (
+        <Fragment key={tab.id}>
+          <Button
+            variant="ghost"
+            size="lg"
+            onClick={() => handleTabClick(tab)}
+            className={cn(
+              "justify-start text-left h-[30px] px-0 leading-[140%] hover:bg-transparent",
+              "relative" // For badge positioning
+            )}
+            style={{
+              color: 'var(--content-default, #151022)',
+              fontFamily: 'var(--font-family-accent, "Work Sans")'
+            }}
+          >
+            <BlueStar className="w-5 h-5 mr-3" />
+            {tab.label}
+            
+            {/* Badge for Tweaks tab positioned after text */}
+            {tab.badge && (
+              <span className="ml-1 text-xs bg-yellow-400 text-black rounded-full w-4 h-4 flex items-center justify-center font-bold">
+                {tab.badge}
+              </span>
+            )}
+          </Button>
+          {index < tabs.length - 1 && <Separator className="border-t border-dashed border-gray-300 bg-transparent my-1" />}
+        </Fragment>
+      ))}
 
-              {/* Badge for Tweaks tab */}
-              {tab.badge && (
-                <div
-                  className={cn(
-                    "absolute -top-1 -right-1 w-5 h-5",
-                    "bg-yellow-400 text-black text-xs font-bold",
-                    "rounded-full flex items-center justify-center",
-                    "ring-2 ring-gray-900" // Dark background ring
-                  )}
-                >
-                  {tab.badge}
-                </div>
-              )}
-            </div>
-
-            {/* Tab Label */}
-            <span
-              className={cn(
-                "text-xs font-medium text-gray-400",
-                "transition-colors duration-200",
-                // Make it slightly larger for special arrow button
-                tab.special && "text-xs"
-              )}
-            >
-              {tab.label}
-            </span>
-          </div>
-        ))}
+      {/* More Button styled like onboarding widget */}
+      <div className="flex justify-center pt-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onTabClick?.("more")}
+          className={cn(
+            "rounded-[20px] px-2.5 py-1 gap-1 border border-black hover:bg-transparent"
+          )}
+          style={{
+            background: 'var(--background-action-secondary, rgba(255, 255, 255, 0.10))',
+            color: 'var(--content-default, #151022)',
+            fontSize: '16px',
+            fontFamily: 'Work Sans',
+            fontWeight: 500,
+            lineHeight: '22.40px',
+            letterSpacing: '0.32px'
+          }}
+        >
+          <Wand className="w-3.5 h-3.5" />
+          More
+        </Button>
       </div>
     </div>
   );
